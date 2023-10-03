@@ -1,39 +1,16 @@
 <body>
     <h1>Login</h1>
-    <form action="process-login.php" method="post">
+    <form action="/" method="post">
         <div>
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
         </div>
+        <br>
         <div>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
         </div>
-        <div>
-            <h2>Select Days of the Week:</h2>
-            <input type="checkbox" id="monday" name="days[]" value="Monday">
-            <label for="monday">Monday</label><br>
-
-            <input type="checkbox" id="tuesday" name="days[]" value="Tuesday">
-            <label for="tuesday">Tuesday</label><br>
-
-            <input type="checkbox" id="wednesday" name="days[]" value="Wednesday">
-            <label for="wednesday">Wednesday</label><br>
-
-            <input type="checkbox" id="thursday" name="days[]" value="Thursday">
-            <label for="thursday">Thursday</label><br>
-
-            <input type="checkbox" id="friday" name="days[]" value="Friday">
-            <label for="friday">Friday</label><br>
-
-            <input type="checkbox" id="saturday" name="days[]" value="Saturday">
-            <label for="saturday">Saturday</label><br>
-
-            <input type="checkbox" id="sunday" name="days[]" value="Sunday">
-            <label for="sunday">Sunday</label><br>
-        </div>
-        <div>
-            <input type="submit" value="Login">
-        </div>
+        <button type="submit" value="Login">Login</button>
+    </form>
     </form>
 </body>

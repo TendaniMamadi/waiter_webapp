@@ -15,6 +15,9 @@ const app = express();
 const connectionString = process.env.DATABASE_URL
 const pgp = pgPromise({});
 const db = pgp(connectionString);
+//const frontendInstance = factory_functions();
+//const backendInstance = db_queries(db)
+//const routeInstance = routes();
 
 app.engine('handlebars', engine({
     layoutsDir: './views/layouts'
@@ -33,20 +36,30 @@ app.use(bodyParser.json());
 app.use(express.json());
 
 
-// // Index route
-// app.get('/', routeInstance.homeRoute);
+// Index route
+app.get('/',(req,res)=>{
+    res.render('index')
+});
 
-// //waiter select days route
-// app.get('/waiters/:username',routeInstance.chooseDaysRoute)
+ //waiter select days route
+ app.get('/waiters/:username',(req,res)=>{
+    res.render('selectDays',{username})
+ })
 
-// //Send the days the waiter can work to the server.
-// app.post('/waiters/:username', routeInstance.insertRoute);
+ //Send the days the waiter can work to the server.
+ app.post('/waiters/:username',(req,res)=>{
 
-// // show admin days available
-// app.get('/days',routeInstance.availableDaysRoute);
+ });
 
-// // Clear database route (POST)
-// app.post('/clear',routeInstance.clearingRoute);
+ // show admin days available
+ app.get('/days',(req,res)=>{
+
+ });
+
+ // Clear database route (POST)
+ app.post('/clear',(req,res)=>{
+    res.redirect('/')
+ });
 
 //PORT
 const PORT = process.env.PORT || 2023;
