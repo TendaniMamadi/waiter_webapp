@@ -1,6 +1,10 @@
 <body>
     <h1>Login</h1>
     <form action="/" method="post">
+
+        {{#if error}}
+        <p style="color: red;">{{error}}</p>
+        {{/if}}
         <div>
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
@@ -12,5 +16,5 @@
         </div>
         <button type="submit" value="Login">Login</button>
     </form>
-    </form>
+   
 </body>

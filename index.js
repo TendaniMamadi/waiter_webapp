@@ -6,8 +6,8 @@ import flash from 'express-flash';
 import session from 'express-session';
 import pgPromise from 'pg-promise';
 import 'dotenv/config';
-//import routes from './Routes/routes.js'
-//import factory_functions from './factory function/web_App.js'
+import route from './services/web_App.js';
+import factory_functions from './services/web_App.js'
 //import db_queries from './database/db_queries.js';
 
 
@@ -15,9 +15,9 @@ const app = express();
 const connectionString = process.env.DATABASE_URL
 const pgp = pgPromise({});
 const db = pgp(connectionString);
-//const frontendInstance = factory_functions();
+const frontendInstance = factory_functions();
 //const backendInstance = db_queries(db)
-//const routeInstance = routes();
+const routeInstance = route();
 
 app.engine('handlebars', engine({
     layoutsDir: './views/layouts'
@@ -37,29 +37,54 @@ app.use(express.json());
 
 
 // Index route
-app.get('/',(req,res)=>{
+app.get('/', (req, res) => {
     res.render('index')
 });
 
- //waiter select days route
- app.get('/waiters/:username',(req,res)=>{
-    res.render('selectDays',{username})
- })
+// Define a simple in-memory database of users (for demonstration purposes)
+const correctUsername = "Tendani";
+const correctPassword = "1234";
 
- //Send the days the waiter can work to the server.
- app.post('/waiters/:username',(req,res)=>{
+//waiter select days route
+app.get('/waiters/:username', (req, res) => {
+    const { username, password } = req.body;
+    // Check if the provided username and password match any user in the database
+    const user = users.find((u) => u.username === username && u.password === password);
 
- });
+    if (user) {
+        // Authentication successful, proceed to the next page
+        res.send('Authentication successful. Welcome to the next page!');
+    } else {
+        // Authentication failed, render the login page with an error message
+        res.render('login', { error: 'Invalid username or password' });
+    }
+})
 
- // show admin days available
- app.get('/days',(req,res)=>{
+//Send the days the waiter can work to the server.
+app.post('/waiters/:username', (req, res) => {
 
- });
+    const { username, password } = req.body;
 
- // Clear database route (POST)
- app.post('/clear',(req,res)=>{
-    res.redirect('/')
- });
+    if (username === correctUsername && password === correctPassword) {
+        // Redirect to the next page or perform the desired action
+        res.redirect('/selectDays');
+    } else {
+        // Display an error message
+        res.send("Invalid username or password. Please try again.");
+    }
+
+});
+
+// show admin days available
+// app.get('/days', (req, res) => {
+//     res.send("<h1>Welcome to the Next Page</h1>");
+
+// });
+
+// // Clear database route (POST)
+// app.post('/clear', (req, res) => {
+//     res.redirect('/')
+// });
 
 //PORT
 const PORT = process.env.PORT || 2025;
