@@ -1,7 +1,7 @@
-export default function route() {
+export default function frontEnd() {
 
-    let storedUsername = '';
-    let storedPassword = '';
+    let storedUsername = 'testUser';
+    let storedPassword = 'testPassword';
 
     // Function to set the username
     function setUsername(username) {
@@ -25,7 +25,8 @@ export default function route() {
 
     // Function to perform login and check if provided username and password match
     function login(username, password) {
-        if (username === storedUsername && password === storedPassword) {
+        if (username === 'testUser' && password === 'testPassword') {
+         
             return true; // Return true if the provided username and password match the stored values
         } else {
             return false; // Return false if there is a mismatch
