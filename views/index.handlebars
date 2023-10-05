@@ -1,20 +1,12 @@
-<body>
-    <h1>Login</h1>
-    <form action="/" method="post">
-
-        {{#if error}}
-        <p style="color: red;">{{error}}</p>
-        {{/if}}
-        <div>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-        </div>
-        <br>
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <button type="submit" value="Login">Login</button>
-    </form>
-   
-</body>
+<div class="loginbox">
+  <img src="/img/avatar.png" alt="" class="avatar" width="100">
+  <h1>Login Here</h1>
+  <form action="/" method="post">
+    <p>Username</p>
+    <input type="text" name="" placeholder="Enter Username">
+    <p>Password</p>
+    <input type="password" name="" placeholder="Enter Password">
+    <br>
+    <input type="submit" name="" value="Login">
+  </form>
+</div>
