@@ -1,0 +1,6 @@
+  <h1>Waiter Availability</h1>
+    <ul>
+        {{#each waiterAvailability}}
+            <li>{{username}} is available on: {{days.join(', ')}}</li>
+        {{/each}}
+    </ul>

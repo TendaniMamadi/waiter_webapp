@@ -38,47 +38,27 @@ app.use(express.json());
 
 // Index route
 app.get('/', (req, res) => {
+    
     res.render('index')
 });
 
-// Define a simple in-memory database of users (for demonstration purposes)
-const correctUsername = "Tendani";
-const correctPassword = "1234";
-
-//waiter select days route
 app.get('/waiters/:username', (req, res) => {
-    const { username, password } = req.body;
-    // Check if the provided username and password match any user in the database
-    const user = users.find((u) => u.username === username && u.password === password);
-
-    if (user) {
-        // Authentication successful, proceed to the next page
-        res.send('Authentication successful. Welcome to the next page!');
-    } else {
-        // Authentication failed, render the login page with an error message
-        res.render('login', { error: 'Invalid username or password' });
-    }
-})
-
-//Send the days the waiter can work to the server.
-app.post('/waiters/:username', (req, res) => {
-
-    const { username, password } = req.body;
-
-    if (username === correctUsername && password === correctPassword) {
-        // Redirect to the next page or perform the desired action
-        res.redirect('/selectDays');
-    } else {
-        // Display an error message
-        res.send("Invalid username or password. Please try again.");
-    }
-
+    // Implement logic to show a screen where waiters can select the days they can work
+    // Fetch data from the database and render a template
+    res.render('waiter_selection', { username: req.params.username });
 });
 
-// show admin days available
-// app.get('/days', (req, res) => {
-//     res.send("<h1>Welcome to the Next Page</h1>");
+app.post('/waiters/:username', (req, res) => {
+    const selectedDays = req.body.days; // This will be an array of selected days
+    console.log(`Waiter ${req.params.username} selected the following days: ${selectedDays}`);
+    res.redirect('/waiters/' + req.params.username);
+});
 
+
+// app.get('/days', (req, res) => {
+//     // Implement logic to show which days waiters are available
+//     // Fetch data from the database and render a template
+//     res.render('waiter_availability');
 // });
 
 // // Clear database route (POST)
