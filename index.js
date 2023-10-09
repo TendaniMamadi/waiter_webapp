@@ -37,10 +37,10 @@ app.use(express.json());
 
 
 // Index route
-app.get('/', (req, res) => {
+// app.get('/', (req, res) => {
     
-    res.render('index')
-});
+//     res.render('index')
+// });
 
 app.get('/waiters/:username', (req, res) => {
     // Implement logic to show a screen where waiters can select the days they can work
@@ -55,11 +55,11 @@ app.post('/waiters/:username', (req, res) => {
 });
 
 
-// app.get('/days', (req, res) => {
-//     // Implement logic to show which days waiters are available
-//     // Fetch data from the database and render a template
-//     res.render('waiter_availability');
-// });
+app.get('/days', (req, res) => {
+    // Implement logic to show which days waiters are available
+    // Fetch data from the database and render a template
+    res.render('waiter_availability');
+});
 
 // // Clear database route (POST)
 // app.post('/clear', (req, res) => {
@@ -67,7 +67,7 @@ app.post('/waiters/:username', (req, res) => {
 // });
 
 //PORT
-const PORT = process.env.PORT || 2023;
+const PORT = process.env.PORT || 2025;
 app.listen(PORT, (req, res) => {
     console.log('We taking off on port:', PORT)
 });

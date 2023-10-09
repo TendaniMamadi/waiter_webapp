@@ -1,7 +1,7 @@
 export default function frontEnd() {
 
-    let storedUsername = 'testUser';
-    let storedPassword = 'testPassword';
+    let storedUsername = '';
+    let storedPassword = '';
     let selectedDays = [];
 
     // Function to set the username
@@ -26,7 +26,7 @@ export default function frontEnd() {
 
     // Function to perform login and check if provided username and password match
     function login(username, password) {
-        if (username === 'testUser' && password === 'testPassword') {
+        if (username === storedUsername && password === storedPassword) {
 
             return true; // Return true if the provided username and password match the stored values
         } else {
