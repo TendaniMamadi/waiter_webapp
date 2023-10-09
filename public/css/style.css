@@ -91,12 +91,19 @@ input[type='password'] {
 
 /* Style the form container */
 form {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f8f8f8;
+    width: 320px;
+    height: 420px;
+    background: transparent;
+    border: 1px solid white;
+    box-shadow: 10px 5px 5px rgb(229, 227, 227);
+    color: #0f0f0f;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+    
 }
 
 /* Style the form labels */
@@ -119,6 +126,7 @@ input[type="submit"] {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+  
 }
 
 /* Style the submit button on hover */

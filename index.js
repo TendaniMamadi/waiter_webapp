@@ -43,16 +43,17 @@ app.get('/', (req, res) => {
 });
 
 app.get('/waiters/:username', (req, res) => {
-    // Implement logic to show a screen where waiters can select the days they can work
-    // Fetch data from the database and render a template
-    res.render('waiter_selection', { username: req.params.username });
+    // Implement logic to use the name entered in the textbox
+    const username = req.params.username;
+    // Fetch days from the database
+    res.render('waiter_selection',{username: username});
 });
 
 app.post('/waiters/:username', (req, res) => {
     const selectedDays = req.body.days; // This will be an array of selected days
     const username = req.params.username;
     console.log(`${username} selected the following days: ${selectedDays}`);
-    res.redirect('/waiters/' + req.params.username);
+    res.redirect('/waiters/',{username: username});
 });
 
 
