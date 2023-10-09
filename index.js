@@ -50,7 +50,8 @@ app.get('/waiters/:username', (req, res) => {
 
 app.post('/waiters/:username', (req, res) => {
     const selectedDays = req.body.days; // This will be an array of selected days
-    console.log(`Waiter ${req.params.username} selected the following days: ${selectedDays}`);
+    const username = req.params.username;
+    console.log(`${username} selected the following days: ${selectedDays}`);
     res.redirect('/waiters/' + req.params.username);
 });
 
