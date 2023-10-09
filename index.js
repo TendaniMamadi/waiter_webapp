@@ -37,10 +37,10 @@ app.use(express.json());
 
 
 // Index route
-// app.get('/', (req, res) => {
+app.get('/', (req, res) => {
     
-//     res.render('index')
-// });
+    res.render('index')
+});
 
 app.get('/waiters/:username', (req, res) => {
     // Implement logic to show a screen where waiters can select the days they can work
