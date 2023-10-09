@@ -23,7 +23,7 @@ body {
     top: 50%;
     left: 50%;
     position: absolute;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     box-sizing: border-box;
     padding: 70px 30px;
 }
@@ -79,7 +79,7 @@ input[type='password'] {
     border-radius: 20px;
 }
 
-.loginbox input[type='submit']:hover{
+.loginbox input[type='submit']:hover {
     cursor: pointer;
     background: #ffc107;
     color: #000;
@@ -89,48 +89,39 @@ input[type='password'] {
 /**************************************************Day selection page***************************************************/
 
 
-/* Style the header */
-h1 {
-    font-size: 24px;
-    color: #333;
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  /* Style the form container */
-  form {
+/* Style the form container */
+form {
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f8f8f8;
-  }
-  
-  /* Style the form labels */
-  label {
+}
+
+/* Style the form labels */
+label {
     display: block;
     margin-bottom: 10px;
     font-weight: bold;
-  }
-  
-  /* Style the checkboxes */
-  input[type="checkbox"] {
+}
+
+/* Style the checkboxes */
+input[type="checkbox"] {
     margin-right: 10px;
-  }
-  
-  /* Style the submit button */
-  input[type="submit"] {
+}
+
+/* Style the submit button */
+input[type="submit"] {
     background-color: #007bff;
     color: #fff;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
-  
-  /* Style the submit button on hover */
-  input[type="submit"]:hover {
+}
+
+/* Style the submit button on hover */
+input[type="submit"]:hover {
     background-color: #0056b3;
-  }
-  
+}
