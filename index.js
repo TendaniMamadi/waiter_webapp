@@ -6,9 +6,9 @@ import flash from 'express-flash';
 import session from 'express-session';
 import pgPromise from 'pg-promise';
 import 'dotenv/config';
-//import route from './services/web_App.js';
+import route from './routes/routes.js';
 import frontEnd from './services/web_App.js'
-//import db_queries from './database/db_queries.js';
+import db_queries from './database/db_queries.js';
 
 
 const app = express();
@@ -16,8 +16,8 @@ const connectionString = process.env.DATABASE_URL
 const pgp = pgPromise({});
 const db = pgp(connectionString);
 const frontendInstance = frontEnd();
-//const backendInstance = db_queries(db)
-//const routeInstance = route();
+const backendInstance = db_queries(db)
+const routeInstance = route(frontendInstance,backendInstance);
 
 app.engine('handlebars', engine({
     layoutsDir: './views/layouts'
