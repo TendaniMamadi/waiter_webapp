@@ -1,11 +1,12 @@
-  <h1>Waiter Availability</h1>
-  <form action="/days" method="post">
-  
-    <ul>
-        {{#each waiterAvailability}}
-            <li>{{username}} is available on: {{selectedDays}}</li>
-        {{/each}}
-    </ul>
+<h1>Waiter Availability</h1>
+<form action="/days" method="post">
 
-    <button type="submit">Confirm</button>
-  </form>
+  <ul>
+    {{#each waiterAvailability}}
+    <li>{{username}} is available on: {{selectedDays}}</li>
+    {{/each}}
+  </ul>
+
+  {{!-- <button type="submit">Confirm</button> --}}
+  <button type="submit">Reset</button>
+</form>
