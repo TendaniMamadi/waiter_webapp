@@ -1,28 +1,27 @@
 export default function routes(frontendInstance, logic) {
     const homeRoute = async (req, res) => {
-        const enteredUsername = req.body.username;
-        const enteredPassword = req.body.password;
-        // // const correctUsername = enteredUsername;
-        // // const correctPassword = 'password123';
 
-        if (enteredUsername && enteredPassword) {
-            res.redirect('/waiters/' + enteredUsername);
-        }
-        else {
-
-            res.render('index');
-        }
-
+        res.render('index');
     }
 
     const recognizeUser = async (req, res) => {
-        // Implement logic to use the name entered in the textbox
-        const username = req.params.username;
-        // Fetch days from the database
-        res.render('waiter_selection', { username: username });
+        const enteredUsername = req.body.username;
+        const enteredPassword = req.body.password;
+
+        if (enteredUsername && enteredPassword) {
+            
+            res.redirect('/waiters/' + enteredUsername);
+        }
     }
 
     const showDays = async (req, res) => {
+        const username = req.params.username;
+
+        res.render('waiter_selection',{username});
+    };
+
+    const submitDays = async (req,res) =>{
+
         const selectedDays = req.body.days; // This will be an array of selected days
         const username = req.params.username;
 
@@ -37,8 +36,8 @@ export default function routes(frontendInstance, logic) {
             req.flash('error', 'Please select days');
         }
 
-        res.redirect('/waiters/' + username);
-    };
+        res.render('waiter_selection',{username})
+    }
 
 
 
@@ -52,6 +51,7 @@ export default function routes(frontendInstance, logic) {
         homeRoute,
         recognizeUser,
         showDays,
+        submitDays,
         clearingRoute
     }
 }

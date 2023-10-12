@@ -38,9 +38,9 @@ app.use(express.json());
 
 // Index route
 app.get('/', routeInstance.homeRoute);
-app.post('/', routeInstance.homeRoute);
-app.get('/waiters/:username', routeInstance.recognizeUser);
-app.post('/waiters/:username',routeInstance.showDays);
+app.post('/', routeInstance.recognizeUser);
+app.get('/waiters/:username', routeInstance.showDays);
+app.post('/waiters/:username',routeInstance.submitDays);
 app.get('/days', (req, res) => {
     // Implement logic to show which days waiters are available
     // Fetch data from the database and render a template
@@ -48,7 +48,7 @@ app.get('/days', (req, res) => {
 });
 
 // Clear database route (POST)
-app.post('/clear',routeInstance.clearingRoute);
+// app.post('/clear',routeInstance.clearingRoute);
 
 //PORT
 const PORT = process.env.PORT || 2025;
