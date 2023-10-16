@@ -8,7 +8,7 @@ export default function routes(frontendInstance, logic) {
         const enteredPassword = req.body.password;
 
         if (enteredUsername && enteredPassword) {
-            
+
             res.redirect('/waiters/' + enteredUsername);
         }
     }
@@ -16,18 +16,18 @@ export default function routes(frontendInstance, logic) {
     const showDays = async (req, res) => {
         const username = req.params.username;
 
-        res.render('waiter_selection',{username});
+        res.render('waiter_selection', { username });
     };
 
-    const submitDays = async (req,res) =>{
+    const submitDays = async (req, res) => {
 
-        const selectedDays = req.body.days; 
+        const selectedDays = req.body.days;
         const username = req.params.username;
 
         if (selectedDays) {
-            if (selectedDays.length <= 2) {
+            if (selectedDays.length >= 2) {
                 req.flash('success', 'Days successfully added.');
-                console.log(`${username} selected the following days: ${selectedDays}`);
+                await logic.insertWaiterAndDayIdIntoShiftTable(username,selectedDays);
             } else {
                 req.flash('warning', 'A minimum of 2 days should be checked!');
             }
@@ -35,15 +35,17 @@ export default function routes(frontendInstance, logic) {
             req.flash('error', 'Please select days');
         }
 
-        res.render('waiter_selection',{username})
+        res.render('waiter_selection', { username })
     };
 
 
     const admin = async (req, res) => {
-        // Implement logic to show which days waiters are available
-        // Fetch data from the database and render a template
-        res.render('waiter_availability');
-    };
+
+        let templateData = await logic.getShiftsData();
+   
+          res.render('waiter_availability',{templateData});
+      
+      };
 
     const clearingRoute = async (req, res) => {
         await logic.resetDaysForNewWeek();

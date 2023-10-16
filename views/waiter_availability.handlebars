@@ -2,11 +2,11 @@
 <form action="/days" method="post">
 
   <ul>
-    {{#each waiterAvailability}}
-    <li>{{username}} is available on: {{selectedDays}}</li>
+    {{#each templateData}}
+    <li>{{this.waiter_name}} is available on: {{day_name}}</li>
     {{/each}}
   </ul>
 
-  {{!-- <button type="submit">Confirm</button> --}}
+ 
   <button type="submit">Reset</button>
 </form>
