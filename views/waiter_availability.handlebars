@@ -1,12 +1,22 @@
+
 <h1>Waiter Availability</h1>
 <form action="/days" method="post">
+  <table>
+    <thead>
+      <tr>
+        <th>Waiter Name</th>
+        <th>Availability</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each templateData}}
+      <tr>
+        <td>{{this.waiter_name}}</td>
+        <td>{{day_name}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
 
-  <ul>
-    {{#each templateData}}
-    <li>{{this.waiter_name}} is available on: {{day_name}}</li>
-    {{/each}}
-  </ul>
-
- 
   <button type="submit">Reset</button>
 </form>
