@@ -21,7 +21,26 @@
     <label for="sunday">Sunday:</label>
     <input type="checkbox" name="days" value="Sunday" id="sunday"><br>
     <br>
-    
+
     <input type="submit" value="Submit">
 </form>
 
+<div class="displayMessage">
+    {{#if messages.success}}
+    <div class="success">
+        <p class="messages" style="color: rgb(8, 156, 42);">{{messages.success}}</p>
+    </div>
+    {{/if}}
+
+    {{#if messages.warning}}
+    <div class="warning">
+        <p class="messages" style="color: rgb(241, 233, 0);">{{messages.warning}}</p>
+    </div>
+    {{/if}}
+
+    {{#if messages.error}}
+    <div class="error">
+        <p class="messages" style="color: rgb(239, 0, 0);">{{messages.error}}</p>
+    </div>
+    {{/if}}
+</div>
