@@ -54,10 +54,10 @@ export default function db_queries(db) {
         const values = [waiterId, dayID];
         await db.query(query, values);
       }
-    
+      return true
     } catch (error) {
       // Handle database insertion errors
-      throw new Error('Error inserting into shifts table: ' + error.message);
+      return false
     }
   }
 
