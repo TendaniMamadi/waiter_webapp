@@ -42,7 +42,7 @@ app.post('/', routeInstance.recognizeUser);
 app.get('/waiters/:username', routeInstance.showDays);
 app.post('/waiters/:username',routeInstance.submitDays);
 app.get('/days', routeInstance.admin);
-app.post('/clear',routeInstance.clearingRoute);
+app.post('/days',routeInstance.clearingRoute);
 
 //PORT
 const PORT = process.env.PORT || 2025;

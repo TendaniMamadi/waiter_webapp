@@ -1,22 +1,76 @@
-
 <h1>Waiter Availability</h1>
 <form action="/days" method="post">
   <table>
     <thead>
       <tr>
-        <th>Waiter Name</th>
         <th>Availability</th>
+        <th>Waiter Name</th>
       </tr>
     </thead>
     <tbody>
-      {{#each templateData}}
       <tr>
-        <td>{{this.waiter_name}}</td>
-        <td>{{day_name}}</td>
+        <td>Monday</td>
+        <td>
+          {{#each staff}}
+          {{this.waiter_name}}{{#unless @last}}, {{/unless}}
+          {{/each}}
+        </td>
       </tr>
-      {{/each}}
+      <tr>
+        <td>Tuesday</td>
+        <td>
+          {{#each staff}}
+          {{this.waiter_name}}{{#unless @last}}, {{/unless}}
+          {{/each}}
+        </td>
+      </tr>
+      <tr>
+        <td>Wednesday</td>
+        <td>
+          {{#each staff}}
+          {{this.waiter_name}}{{#unless @last}}, {{/unless}}
+          {{/each}}
+        </td>
+      </tr>
+      <tr>
+        <td>Thursday</td>
+        <td>
+          {{#each staff}}
+          {{this.waiter_name}}{{#unless @last}}, {{/unless}}
+          {{/each}}
+        </td>
+      </tr>
+      <tr>
+        <td>Friday</td>
+        <td>
+          {{#each staff}}
+          {{this.waiter_name}}{{#unless @last}}, {{/unless}}
+          {{/each}}
+        </td>
+      </tr>
+      <tr>
+        <td>Saturday</td>
+        <td>
+          {{#each staff}}
+          {{this.waiter_name}}{{#unless @last}}, {{/unless}}
+          {{/each}}
+        </td>
+      </tr>
+      <tr>
+        <td>Sunday</td>
+        <td>
+          {{#each staff}}
+          {{this.waiter_name}}{{#unless @last}}, {{/unless}}
+          {{/each}}
+        </td>
+      </tr>
     </tbody>
   </table>
 
+</form>
+
+<form action="/days" method="post">
+
   <button type="submit">Reset</button>
+
 </form>

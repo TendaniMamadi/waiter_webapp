@@ -27,7 +27,7 @@ export default function routes(frontendInstance, logic) {
         if (selectedDays) {
             if (selectedDays.length >= 2) {
                 req.flash('success', 'Days successfully added.');
-                await logic.insertWaiterAndDayIdIntoShiftTable(username,selectedDays);
+                await logic.insertWaiterAndDayIdIntoShiftTable(username, selectedDays);
             } else {
                 req.flash('warning', 'A minimum of 2 days should be checked!');
             }
@@ -41,16 +41,18 @@ export default function routes(frontendInstance, logic) {
 
     const admin = async (req, res) => {
 
-        let templateData = await logic.getShiftsData();
-   
-          res.render('waiter_availability',{templateData});
-      
-      };
+        let staff = await logic.getShiftsData();
+
+        res.render('waiter_availability', { staff });
+
+    };
 
     const clearingRoute = async (req, res) => {
         await logic.resetDaysForNewWeek();
-        res.redirect('/')
+        res.redirect('/days');
     };
+
+
 
     return {
         homeRoute,

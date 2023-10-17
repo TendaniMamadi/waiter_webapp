@@ -66,10 +66,10 @@ export default function db_queries(db) {
   async function getShiftsData() {
     try {
       const query = `
-        SELECT shifts.shift_id, waiters.name AS waiter_name, days.day_name
-        FROM shifts
-        INNER JOIN waiters ON shifts.waiter_id = waiters.waiter_id
-        INNER JOIN days ON shifts.day_id = days.day_id;
+      SELECT days.day_name, waiters.name as waiter_name
+      FROM shifts
+      INNER JOIN waiters ON shifts.waiter_id = waiters.waiter_id
+      INNER JOIN days ON shifts.day_id = days.day_id;
       `;
       const result = await db.any(query);
       return result;
