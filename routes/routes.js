@@ -20,24 +20,28 @@ export default function routes(frontendInstance, logic) {
     };
 
     const submitDays = async (req, res) => {
-
         const selectedDays = req.body.days;
         const username = req.params.username;
-
-        if (selectedDays) {
-            if (selectedDays.length < 2) {
-                req.flash('warning', 'A minimum of 2 days should be checked!');
-            } else if (await logic.insertWaiterAndDayIdIntoShiftTable(username, selectedDays)
-            ) {
-                req.flash('success', 'Days successfully added.');
-            } else {
-                req.flash('error', 'Waiter unknown');
-            }
-        } else {
+        
+        if (!selectedDays) {
             req.flash('error', 'Please select days');
+        } else if (typeof selectedDays === 'string') {
+            req.flash('warning', 'A minimum of 2 days should be checked!');
+        } else {
+            try {
+                const result = await logic.insertWaiterAndDayIdIntoShiftTable(username, selectedDays);
+                if (result) {
+                    req.flash('success', 'Days successfully added.');
+                } else {
+                    req.flash('error', 'Waiter unknown');
+                }
+            } catch (error) {
+                req.flash('error', 'An error occurred while processing the request.');
+                console.error('Error: ', error);
+            }
         }
 
-        res.render('waiter_selection', { username })
+        res.render('waiter_selection', { username });
     };
 
 
@@ -59,7 +63,7 @@ export default function routes(frontendInstance, logic) {
         }
 
         const groupedData = groupWaitersByDay(staff);
-        console.log(groupedData);
+
 
         res.render('waiter_availability', { groupedData });
 
