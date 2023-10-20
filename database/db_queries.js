@@ -1,23 +1,16 @@
 export default function db_queries(db) {
 
 
-  // async function getCredentials(name, password) {
-  //   try {
-  //     const query = 'SELECT * FROM waiters WHERE name = $1 AND password = $2';
-  //     const credentials = await db.oneOrNone(query, [name, password]);
-
-  //     if (credentials) {
-  //       // Credentials found, return the user data or relevant information
-  //       return credentials;
-  //     } else {
-  //       // Credentials not found
-  //       return null;
-  //     }
-  //   } catch (error) {
-  //     // Handle database query errors
-  //     throw new Error('Error fetching credentials: ' + error.message);
-  //   }
-  // }
+  async function getCredentials(waiter, password) {
+    try {
+      const query = 'SELECT * FROM waiters WHERE name = $1 AND password = $2';
+      const values = [waiter, password]
+      const result = await db.oneOrNone(query, values);
+      return result;
+    } catch (error) {
+     return false
+    }
+  }
 
   async function getWaiterId(name) {
     try {
@@ -93,7 +86,7 @@ export default function db_queries(db) {
 
 
   return {
-    // getCredentials,
+    getCredentials,
     getWaiterId,
     getDayId,
     insertWaiterAndDayIdIntoShiftTable,

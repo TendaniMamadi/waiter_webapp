@@ -47,3 +47,8 @@
         <input type="submit" value="Submit">
     </form>
 </div>
+
+{{#each days}}
+<input type="checkbox" id="{{this.day_id}}" name="day" value="{{this.day_name}}" {{#if this.checked}}checked{{/if}}>
+<label for="{{this.day_id}}">{{this.day_name}}</label><br>
+{{/each}}

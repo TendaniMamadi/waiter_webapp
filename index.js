@@ -38,14 +38,14 @@ app.use(express.json());
 
 //Routes
 app.get('/', routeInstance.homeRoute);
-app.post('/', routeInstance.recognizeUser);
+app.post('/', routeInstance.authenticateUser);
 app.get('/waiters/:username', routeInstance.showDays);
 app.post('/waiters/:username',routeInstance.submitDays);
 app.get('/days', routeInstance.admin);
 app.post('/days',routeInstance.clearingRoute);
 
 //PORT
-const PORT = process.env.PORT || 2025;
+const PORT = process.env.PORT || 2023;
 app.listen(PORT, (req, res) => {
     console.log('We taking off on port:', PORT)
 });
