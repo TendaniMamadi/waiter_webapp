@@ -9,6 +9,7 @@ label {
 }
  
 .daysPage {
+    display: inline-block;
     width: 320px;
     height: 420px;
     background: transparent;
@@ -25,6 +26,12 @@ label {
 /* Style the checkboxes */
 input[type="checkbox"] {
     margin-right: 10px;
+}
+
+/*form*/
+.daysPage form {
+    display: inline-block;
+    margin-right: 1px;
 }
 
 /* Style the submit button */

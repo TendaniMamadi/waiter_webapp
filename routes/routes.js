@@ -115,6 +115,11 @@ export default function routes(frontendInstance, logic) {
         res.redirect('/days');
     };
 
+    const endSession = async (req,res) =>{
+        req.flash('success', 'You have successfully logged out');
+        res.redirect('/')
+    }
+
 
 
     return {
@@ -123,6 +128,7 @@ export default function routes(frontendInstance, logic) {
         showDays,
         submitDays,
         admin,
-        clearingRoute
+        clearingRoute,
+        endSession
     }
 }
