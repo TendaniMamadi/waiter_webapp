@@ -19,36 +19,17 @@
     {{/if}}
 </div>
 
+
 <div class="daysPage">
 
     <form action="/waiters/{{username}}" method="post">
-        <label for="monday">Monday:</label>
-        <input type="checkbox" name="days" value="Monday" id="monday"><br>
-
-        <label for="tuesday">Tuesday:</label>
-        <input type="checkbox" name="days" value="Tuesday" id="tuesday"><br>
-
-        <label for="wednesday">Wednesday:</label>
-        <input type="checkbox" name="days" value="Wednesday" id="wednesday"><br>
-
-        <label for="thursday">Thursday:</label>
-        <input type="checkbox" name="days" value="Thursday" id="thursday"><br>
-
-        <label for="friday">Friday:</label>
-        <input type="checkbox" name="days" value="Friday" id="friday"><br>
-
-        <label for="saturday">Saturday:</label>
-        <input type="checkbox" name="days" value="Saturday" id="saturday"><br>
-
-        <label for="sunday">Sunday:</label>
-        <input type="checkbox" name="days" value="Sunday" id="sunday"><br>
-        <br>
-
-        <input type="submit" value="Submit">
+        {{#each days}}
+        <label for="{{this.day_id}}">{{this.day_name}}</label>
+        <input type="checkbox" id="{{this.day_id}}" name="days" value="{{this.day_name}}" {{#if
+            this.checked}}checked{{/if}}>
+        {{/each}}
+        <button type="submit" value="Submit">
+            Select days
+        </button>
     </form>
 </div>
-
-{{#each days}}
-<input type="checkbox" id="{{this.day_id}}" name="day" value="{{this.day_name}}" {{#if this.checked}}checked{{/if}}>
-<label for="{{this.day_id}}">{{this.day_name}}</label><br>
-{{/each}}

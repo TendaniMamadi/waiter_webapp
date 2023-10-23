@@ -8,7 +8,7 @@ export default function db_queries(db) {
       const result = await db.oneOrNone(query, values);
       return result;
     } catch (error) {
-     return false
+      return false
     }
   }
 
@@ -24,6 +24,15 @@ export default function db_queries(db) {
     }
   }
 
+  async function showAllDays() {
+    try {
+      const allDays = await db.any('SELECT * FROM days');
+      return allDays;
+    } catch (error) {
+      throw new Error('Error retrieving all days from the database: ' + error.message);
+    }
+  }
+
   async function getDayId(dayName) {
     try {
       const query = 'SELECT day_id FROM days WHERE day_name = $1;';
@@ -31,8 +40,18 @@ export default function db_queries(db) {
       const result = await db.one(query, values);
       return result.day_id;
     } catch (error) {
-      // Handle database retrieval errors
+
       throw new Error('Error retrieving day ID from the database: ' + error.message);
+    }
+  }
+
+  async function getSelectedDays(username) {
+    try {
+      const query = 'SELECT days.day_name FROM days JOIN shifts ON shifts.day_id = days.day_id JOIN waiters ON shifts.waiter_id = waiters.waiter_id WHERE waiters.name = $1';
+      const selectedDays = await db.any(query, [username]);
+      return selectedDays.map(day => day.day_name);
+    } catch (error) {
+      throw new Error('Error retrieving selected days from the database: ' + error.message);
     }
   }
 
@@ -88,6 +107,8 @@ export default function db_queries(db) {
   return {
     getCredentials,
     getWaiterId,
+    showAllDays,
+    getSelectedDays,
     getDayId,
     insertWaiterAndDayIdIntoShiftTable,
     getShiftsData,

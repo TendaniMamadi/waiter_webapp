@@ -9,4 +9,11 @@
     <br>
     <input type="submit" name="" value="Enter">
   </form>
+  <div class="errorMessage">
+    {{#if messages.error}}
+    <div class="error">
+      <p class="messages" style="color: rgb(239, 0, 0);">{{messages.error}}</p>
+    </div>
+    {{/if}}
+  </div>
 </div>

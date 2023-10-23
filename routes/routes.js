@@ -6,32 +6,53 @@ export default function routes(frontendInstance, logic) {
 
     const authenticateUser = async (req, res) => {
         const { username, password } = req.body;
-        const user = {
-            username,
-            password
-        };
-        console.log(user);
-        if (user) {
+
+        try {
             const result = await logic.getCredentials(username, password);
-            if (result.password === user.password) { // Compare the stored password with the input password
-                if (result.admin === true) {
-                    res.redirect(`/days`);
-                } else {
-                    res.redirect(`/waiters/${username}`);
-                }
+
+            if (!result) {
+                req.flash('error', 'User not found');
+                res.render('index', { username });
             } else {
-                req.flash('error', 'Invalid username or password');
+                if (result.password === password) {
+                    if (result.admin === true) {
+                        res.redirect(`/days`);
+                    } else {
+                        res.redirect(`/waiters/${username}`);
+                    }
+                } else {
+                    req.flash('error', 'Invalid username or password');
+                    res.render('index', { username });
+                }
             }
-        } else {
-            req.flash('error', 'User not found');
+        } catch (error) {
+            req.flash('error', 'An error occurred while processing the request');
+            console.error('Error:', error);
+            res.render('index', { username });
         }
-    }
+    };
 
 
     const showDays = async (req, res) => {
         const username = req.params.username;
-
-        res.render('waiter_selection', { username });
+        try {
+            const allDays = await logic.showAllDays();
+            const selectedDays = await logic.getSelectedDays(username);
+            
+            allDays.forEach(day => {
+              
+                if (selectedDays.includes(day.day_name)) {
+                    day.checked = true;
+                } else {
+                    day.checked = false;
+                }
+            });
+       
+            res.render('waiter_selection', { username, days: allDays });
+        } catch (error) {
+            res.status(500).send('Error fetching data');
+            console.error('Error: ', error);
+        }
     };
 
     const submitDays = async (req, res) => {
@@ -40,15 +61,19 @@ export default function routes(frontendInstance, logic) {
 
         if (!selectedDays) {
             req.flash('error', 'Please select days');
+            
         } else if (typeof selectedDays === 'string') {
             req.flash('warning', 'A minimum of 2 days should be checked!');
+            
         } else {
             try {
                 const result = await logic.insertWaiterAndDayIdIntoShiftTable(username, selectedDays);
                 if (result) {
                     req.flash('success', 'Days successfully added.');
+                  
                 } else {
                     req.flash('error', 'Waiter unknown');
+                    
                 }
             } catch (error) {
                 req.flash('error', 'An error occurred while processing the request.');
@@ -56,7 +81,8 @@ export default function routes(frontendInstance, logic) {
             }
         }
 
-        res.render('waiter_selection', { username });
+       
+        res.redirect('/waiters/' + username)
     };
 
 
@@ -93,7 +119,6 @@ export default function routes(frontendInstance, logic) {
 
     return {
         homeRoute,
-        // recognizeUser,
         authenticateUser,
         showDays,
         submitDays,
@@ -101,24 +126,3 @@ export default function routes(frontendInstance, logic) {
         clearingRoute
     }
 }
-
-
-
-
-// app.get('/', async (req, res) => {
-//     try {
-//         const data = await db.any('SELECT * FROM days'); // Assuming you have a table called 'days'
-//         // Assuming you have a list of selectedDays from the database
-//         const selectedDays = ['Monday', 'Tuesday']; // Replace with your actual data
-//         data.forEach(day => {
-//             if (selectedDays.includes(day.day_name)) {
-//                 day.checked = true;
-//             } else {
-//                 day.checked = false;
-//             }
-//         });
-//         res.render('your_template', { days: data });
-//     } catch (error) {
-//         res.status(500).send('Error fetching data');
-//     }
-// });
