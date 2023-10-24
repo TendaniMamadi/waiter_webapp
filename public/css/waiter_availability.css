@@ -10,7 +10,7 @@
     th, td {
       border: 1px solid #dddddd;
       text-align: left;
-      padding: 8px;
+      padding: 5px;
     }
 
     th {
@@ -39,4 +39,16 @@
 
     h1 {
       text-align: center;
+    }
+
+    .orange{
+      color: orange;
+    }
+
+    .red{
+      color: red;
+    }
+
+    .green{
+      color: green;
     }

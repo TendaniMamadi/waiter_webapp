@@ -10,7 +10,7 @@ export default function db_queries(db) {
     } catch (error) {
       return false
     }
-  }
+  };
 
   async function getWaiterId(name) {
     try {
@@ -22,7 +22,7 @@ export default function db_queries(db) {
       // Handle database retrieval errors
       throw new Error('Error retrieving waiter ID from the database: ' + error.message);
     }
-  }
+  };
 
   async function showAllDays() {
     try {
@@ -31,7 +31,7 @@ export default function db_queries(db) {
     } catch (error) {
       throw new Error('Error retrieving all days from the database: ' + error.message);
     }
-  }
+  };
 
   async function getDayId(dayName) {
     try {
@@ -43,7 +43,7 @@ export default function db_queries(db) {
 
       throw new Error('Error retrieving day ID from the database: ' + error.message);
     }
-  }
+  };
 
   async function getSelectedDays(username) {
     try {
@@ -53,29 +53,30 @@ export default function db_queries(db) {
     } catch (error) {
       throw new Error('Error retrieving selected days from the database: ' + error.message);
     }
-  }
+  };
 
-  async function checkForDuplicates(waiterName, selectedDay) {
-    try {
-      const result = await db.oneOrNone(
-        'SELECT * FROM shifts ' +
-        'JOIN waiters ON shifts.waiter_id = waiters.waiter_id ' +
-        'JOIN days ON shifts.day_id = days.day_id ' +
-        'WHERE waiters.name = $1 AND days.day_name = $2',
-        [waiterName, selectedDay]
-      );
+  // async function checkForDuplicates(waiterName, selectedDay) {
+  //   try {
+  //     const result = await db.oneOrNone(
+  //       'SELECT * FROM shifts ' +
+  //       'JOIN waiters ON shifts.waiter_id = waiters.waiter_id ' +
+  //       'JOIN days ON shifts.day_id = days.day_id ' +
+  //       'WHERE waiters.name = $1 AND days.day_name = $2',
+  //       [waiterName, selectedDay]
+  //     );
 
-      return result !== null; 
-    } catch (error) {
-      throw new Error('Error checking for duplicates: ' + error.message);
-    }
-  }
-
+  //     return result !== null;
+  //   } catch (error) {
+  //     throw new Error('Error checking for duplicates: ' + error.message);
+  //   }
+  // };
 
   async function insertWaiterAndDayIdIntoShiftTable(waiter, days) {
     try {
       const query = 'INSERT INTO shifts (waiter_id, day_id) VALUES ($1, $2);';
       let waiterId = await getWaiterId(waiter);
+      console.log(waiterId);
+      await db.none(`delete from shifts where waiter_id = $1`, [waiterId])
       for (let i = 0; i < days.length; i++) {
         const day = days[i];
         let dayID = await getDayId(day)
@@ -87,7 +88,7 @@ export default function db_queries(db) {
       // Handle database insertion errors
       return false
     }
-  }
+  };
 
 
 
@@ -105,7 +106,7 @@ export default function db_queries(db) {
       // Handle errors
       throw new Error('Error retrieving shifts data from the database: ' + error.message);
     }
-  }
+  };
 
 
   async function resetDaysForNewWeek() {
@@ -116,7 +117,7 @@ export default function db_queries(db) {
       throw error;
     }
 
-  }
+  };
 
 
 
@@ -126,7 +127,7 @@ export default function db_queries(db) {
     showAllDays,
     getSelectedDays,
     getDayId,
-    checkForDuplicates,
+    // checkForDuplicates,
     insertWaiterAndDayIdIntoShiftTable,
     getShiftsData,
     resetDaysForNewWeek

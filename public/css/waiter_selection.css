@@ -14,14 +14,14 @@ label {
     height: 420px;
     background: transparent;
     border: 1px solid white;
-    box-shadow: 10px 5px 5px rgb(229, 227, 227);
+    box-shadow: 5px 5px 5px rgb(229, 227, 227);
     color: #0f0f0f;
-    top: 50%;
+    top: 40%;
     left: 50%;
     position: absolute;
     transform: translate(-50%, -50%);
     box-sizing: border-box;
-    padding: 70px 30px;
+    padding: 40px 60px;
 }
 /* Style the checkboxes */
 input[type="checkbox"] {

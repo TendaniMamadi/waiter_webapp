@@ -58,7 +58,7 @@ export default function routes(frontendInstance, logic) {
     const submitDays = async (req, res) => {
         const selectedDays = req.body.days;
         const username = req.params.username;
-
+        // console.log(req.body);
         if (!selectedDays) {
             req.flash('error', 'Please select days');
             res.redirect('/waiters/' + username);
@@ -72,14 +72,14 @@ export default function routes(frontendInstance, logic) {
         }
 
         try {
-            for (const day of selectedDays) {
-                const isDuplicate = await logic.checkForDuplicates(username, day);
-
-                if (isDuplicate) {
-                    res.redirect('/waiters/' + username);
-                    return;
-                }
-            }
+            // for (const day of selectedDays) {
+            //     const isDuplicate = await logic.checkForDuplicates(username, day);
+            //     console.log(isDuplicate);
+            //     if (isDuplicate) {
+            //         res.redirect('/waiters/' + username);
+            //         return;
+            //     }
+            // }
 
             const result = await logic.insertWaiterAndDayIdIntoShiftTable(username, selectedDays);
             if (result) {
@@ -95,8 +95,6 @@ export default function routes(frontendInstance, logic) {
 
         res.redirect('/waiters/' + username);
     };
-
-
 
     const admin = async (req, res) => {
 
@@ -117,9 +115,21 @@ export default function routes(frontendInstance, logic) {
 
         const groupedData = groupWaitersByDay(staff);
 
+        for (const key in groupedData) {
+            const element = groupedData[key];
+            if (element.length > 3) {
+                groupedData[key].colour = "red";
+            } else if (element.length < 3) {
+                groupedData[key].colour = "orange";
+            } 
+            else {
+                groupedData[key].colour = "green"; 
+            }
+        }
+
+        console.log(groupedData);
 
         res.render('waiter_availability', { groupedData });
-
     };
 
     const clearingRoute = async (req, res) => {

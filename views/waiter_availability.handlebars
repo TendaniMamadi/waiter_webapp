@@ -10,44 +10,72 @@
     <tbody>
       <tr>
         <td>Monday</td>
-        <td>
+        <td class="{{groupedData.Monday.colour}}">
+          {{#if groupedData.Monday}}
           {{groupedData.Monday}}
+          {{else}}
+          <p>no waiters available</p>
+          {{/if}}
         </td>
       </tr>
       <tr>
         <td>Tuesday</td>
-        <td>
+        <td class="{{groupedData.Tuesday.colour}}">
+          {{#if groupedData.Tuesday}}
           {{groupedData.Tuesday}}
+          {{else}}
+          <p>no waiters available</p>
+          {{/if}}
         </td>
       </tr>
       <tr>
         <td>Wednesday</td>
-        <td>
+        <td class="{{groupedData.Wednesday.colour}}">
+             {{#if groupedData.Wednesday}}
           {{groupedData.Wednesday}}
+          {{else}}
+          <p>no waiters available</p>
+          {{/if}}
         </td>
       </tr>
       <tr>
         <td>Thursday</td>
-        <td>
+        <td class="{{groupedData.Thursday.colour}}">
+             {{#if groupedData.Thursday}}
           {{groupedData.Thursday}}
+          {{else}}
+          <p>no waiters available</p>
+          {{/if}}
         </td>
       </tr>
       <tr>
         <td>Friday</td>
-        <td>
+        <td class="{{groupedData.Friday.colour}}">
+           {{#if groupedData.Friday}}
           {{groupedData.Friday}}
+          {{else}}
+          <p>no waiters available</p>
+          {{/if}}
         </td>
       </tr>
       <tr>
         <td>Saturday</td>
-        <td>
+        <td class="{{groupedData.Saturday.colour}}">
+             {{#if groupedData.Saturday}}
           {{groupedData.Saturday}}
+          {{else}}
+          <p>no waiters available</p>
+          {{/if}}
         </td>
       </tr>
       <tr>
         <td>Sunday</td>
-        <td>
+        <td class="{{groupedData.Sunday.colour}}">
+            {{#if groupedData.Sunday}}
           {{groupedData.Sunday}}
+          {{else}}
+          <p>no waiters available</p>
+          {{/if}}
         </td>
       </tr>
     </tbody>
