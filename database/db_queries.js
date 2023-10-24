@@ -55,6 +55,22 @@ export default function db_queries(db) {
     }
   }
 
+  async function checkForDuplicates(waiterName, selectedDay) {
+    try {
+      const result = await db.oneOrNone(
+        'SELECT * FROM shifts ' +
+        'JOIN waiters ON shifts.waiter_id = waiters.waiter_id ' +
+        'JOIN days ON shifts.day_id = days.day_id ' +
+        'WHERE waiters.name = $1 AND days.day_name = $2',
+        [waiterName, selectedDay]
+      );
+
+      return result !== null; 
+    } catch (error) {
+      throw new Error('Error checking for duplicates: ' + error.message);
+    }
+  }
+
 
   async function insertWaiterAndDayIdIntoShiftTable(waiter, days) {
     try {
@@ -110,6 +126,7 @@ export default function db_queries(db) {
     showAllDays,
     getSelectedDays,
     getDayId,
+    checkForDuplicates,
     insertWaiterAndDayIdIntoShiftTable,
     getShiftsData,
     resetDaysForNewWeek

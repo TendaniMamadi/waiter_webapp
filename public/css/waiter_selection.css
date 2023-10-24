@@ -29,9 +29,10 @@ input[type="checkbox"] {
 }
 
 /*form*/
+
 .daysPage form {
     display: inline-block;
-    margin-right: 1px;
+    margin-right: 10px;
 }
 
 /* Style the submit button */

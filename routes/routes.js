@@ -38,16 +38,16 @@ export default function routes(frontendInstance, logic) {
         try {
             const allDays = await logic.showAllDays();
             const selectedDays = await logic.getSelectedDays(username);
-            
+
             allDays.forEach(day => {
-              
+
                 if (selectedDays.includes(day.day_name)) {
                     day.checked = true;
                 } else {
                     day.checked = false;
                 }
             });
-       
+
             res.render('waiter_selection', { username, days: allDays });
         } catch (error) {
             res.status(500).send('Error fetching data');
@@ -61,29 +61,41 @@ export default function routes(frontendInstance, logic) {
 
         if (!selectedDays) {
             req.flash('error', 'Please select days');
-            
-        } else if (typeof selectedDays === 'string') {
-            req.flash('warning', 'A minimum of 2 days should be checked!');
-            
-        } else {
-            try {
-                const result = await logic.insertWaiterAndDayIdIntoShiftTable(username, selectedDays);
-                if (result) {
-                    req.flash('success', 'Days successfully added.');
-                  
-                } else {
-                    req.flash('error', 'Waiter unknown');
-                    
-                }
-            } catch (error) {
-                req.flash('error', 'An error occurred while processing the request.');
-                console.error('Error: ', error);
-            }
+            res.redirect('/waiters/' + username);
+            return;
         }
 
-       
-        res.redirect('/waiters/' + username)
+        if (typeof selectedDays === 'string') {
+            req.flash('warning', 'A minimum of 2 days should be checked!');
+            res.redirect('/waiters/' + username);
+            return;
+        }
+
+        try {
+            for (const day of selectedDays) {
+                const isDuplicate = await logic.checkForDuplicates(username, day);
+
+                if (isDuplicate) {
+                    res.redirect('/waiters/' + username);
+                    return;
+                }
+            }
+
+            const result = await logic.insertWaiterAndDayIdIntoShiftTable(username, selectedDays);
+            if (result) {
+                req.flash('success', 'Days successfully added.');
+            } else {
+                req.flash('error', 'Waiter unknown');
+            }
+
+        } catch (error) {
+            req.flash('error', 'An error occurred while processing the request.');
+            console.error('Error: ', error);
+        }
+
+        res.redirect('/waiters/' + username);
     };
+
 
 
     const admin = async (req, res) => {
@@ -115,7 +127,7 @@ export default function routes(frontendInstance, logic) {
         res.redirect('/days');
     };
 
-    const endSession = async (req,res) =>{
+    const endSession = async (req, res) => {
         req.flash('success', 'You have successfully logged out');
         res.redirect('/')
     }
