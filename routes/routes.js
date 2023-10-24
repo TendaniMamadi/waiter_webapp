@@ -136,7 +136,7 @@ export default function routes(frontendInstance, logic) {
     };
 
     const endSession = async (req, res) => {
-        await logic.flashMessages();
+       req.flash('success','You have successfuly logged out');
         res.redirect('/')
     }
 
