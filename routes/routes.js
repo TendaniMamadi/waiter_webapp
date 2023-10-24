@@ -121,9 +121,9 @@ export default function routes(frontendInstance, logic) {
                 groupedData[key].colour = "red";
             } else if (element.length < 3) {
                 groupedData[key].colour = "orange";
-            } 
+            }
             else {
-                groupedData[key].colour = "green"; 
+                groupedData[key].colour = "green";
             }
         }
 
@@ -136,9 +136,16 @@ export default function routes(frontendInstance, logic) {
     };
 
     const endSession = async (req, res) => {
-        req.flash('success', 'You have successfully logged out');
+        await logic.flashMessages();
         res.redirect('/')
     }
+
+    // const flashMessages = (req, res) => {
+    //     req.flash('success', 'This is a success message');
+    //     req.flash('warning', 'This is a warning message');
+    //     req.flash('error', 'This is an error message');
+    //     res.render('display_messages', { messages: req.flash() });
+    // }
 
 
 
@@ -149,6 +156,7 @@ export default function routes(frontendInstance, logic) {
         submitDays,
         admin,
         clearingRoute,
-        endSession
+        endSession,
+        // flashMessages
     }
 }

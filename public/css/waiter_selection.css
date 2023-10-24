@@ -36,19 +36,19 @@ input[type="checkbox"] {
 }
 
 /* Style the submit button */
-input[type="submit"] {
-    background-color: #007bff;
+.daysPage button[type="submit"] {
+    background-color: rgba(196, 164, 132);
     color: #fff;
     padding: 10px 20px;
-    border: none;
+    border: 1px solid #dddddd;
     border-radius: 5px;
     cursor: pointer;
   
 }
 
 /* Style the submit button on hover */
-input[type="submit"]:hover {
-    background-color: #0056b3;
+.daysPage button[type="submit"]:hover {
+    background-color: 	rgba(192, 189, 189, 0.945);
 }
 
 /* Media queries for responsiveness */

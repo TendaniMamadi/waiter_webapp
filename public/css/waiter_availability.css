@@ -28,15 +28,15 @@ button[type="submit"] {
   margin: 20px auto;
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #4CAF50;
+  background-color: rgba(196, 164, 132);
   color: white;
-  border: none;
+  border: 1px solid #dddddd;
   border-radius: 4px;
   cursor: pointer;
 }
 
 button[type="submit"]:hover {
-  background-color: #45a049;
+  background-color: rgba(192, 189, 189, 0.945);
 }
 
 /* CSS for the headings */
@@ -57,9 +57,47 @@ h1 {
   color: green;
 }
 
+/*legend styling*/
+.legend {
+  position: fixed;
+  bottom: 140px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.legend-text {
+  font-size: 14px;
+}
+
+
 /* Media queries for responsiveness */
 @media (max-width: 768px) {
   table {
     width: 100%;
+  }
+}
+
+/* For responsiveness */
+@media only screen and (max-width: 600px) {
+  .legend {
+    flex-direction: column;
+    left: 10px;
+    bottom: 10px;
+  }
+  .legend-item {
+    margin-bottom: 10px;
   }
 }

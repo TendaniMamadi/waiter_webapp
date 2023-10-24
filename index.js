@@ -44,6 +44,8 @@ app.post('/waiters/:username',routeInstance.submitDays);
 app.get('/days', routeInstance.admin);
 app.post('/days',routeInstance.clearingRoute);
 app.get('/logout',routeInstance.endSession);
+// app.get('/display_messages',routeInstance.flashMessages);
+  
 
 //PORT
 const PORT = process.env.PORT || 2023;

@@ -31,7 +31,7 @@
       <tr>
         <td>Wednesday</td>
         <td class="{{groupedData.Wednesday.colour}}">
-             {{#if groupedData.Wednesday}}
+          {{#if groupedData.Wednesday}}
           {{groupedData.Wednesday}}
           {{else}}
           <p>no waiters available</p>
@@ -41,7 +41,7 @@
       <tr>
         <td>Thursday</td>
         <td class="{{groupedData.Thursday.colour}}">
-             {{#if groupedData.Thursday}}
+          {{#if groupedData.Thursday}}
           {{groupedData.Thursday}}
           {{else}}
           <p>no waiters available</p>
@@ -51,7 +51,7 @@
       <tr>
         <td>Friday</td>
         <td class="{{groupedData.Friday.colour}}">
-           {{#if groupedData.Friday}}
+          {{#if groupedData.Friday}}
           {{groupedData.Friday}}
           {{else}}
           <p>no waiters available</p>
@@ -61,7 +61,7 @@
       <tr>
         <td>Saturday</td>
         <td class="{{groupedData.Saturday.colour}}">
-             {{#if groupedData.Saturday}}
+          {{#if groupedData.Saturday}}
           {{groupedData.Saturday}}
           {{else}}
           <p>no waiters available</p>
@@ -71,7 +71,7 @@
       <tr>
         <td>Sunday</td>
         <td class="{{groupedData.Sunday.colour}}">
-            {{#if groupedData.Sunday}}
+          {{#if groupedData.Sunday}}
           {{groupedData.Sunday}}
           {{else}}
           <p>no waiters available</p>
@@ -85,10 +85,26 @@
 
 <form action="/days" method="post">
 
-  <button type="submit">Reset</button>
+  <button type="submit"><i class='bx bx-reset'></i>Reset</button>
 
 </form>
 
 <form action="/logout" method="get">
-  <button type="submit">Logout</button>
+  <button type="submit"><i class='bx bx-log-out'></i>Logout</button>
 </form>
+
+
+<div class="legend">
+  <div class="legend-item">
+    <span class="legend-color" style="background-color: red;"></span>
+    <span class="legend-text">Over-Booked</span>
+  </div>
+  <div class="legend-item">
+    <span class="legend-color" style="background-color: orange;"></span>
+    <span class="legend-text">Under-staffed</span>
+  </div>
+  <div class="legend-item">
+    <span class="legend-color" style="background-color: green;"></span>
+    <span class="legend-text">Balance</span>
+  </div>
+</div>

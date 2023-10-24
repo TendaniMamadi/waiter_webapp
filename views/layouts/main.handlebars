@@ -17,12 +17,12 @@
     </div>
 </body>
 
+   {{!-- <div class="success">{{messages.success}}</div>
+    <div class="warning">{{messages.warning}}</div>
+    <div class="error">{{messages.error}}</div>
 <script>
 
-    const greenLight = document.querySelector('.success');
-    const yellowLight = document.querySelector('.warning')
-    const redLight = document.querySelector('.error');
-    const clearButton = document.querySelector(".clear");
+
 
     clearButton.addEventListener("click", function () {
         if (confirm("Your data will be permanently deleted")) {
@@ -31,28 +31,28 @@
     });
 
 
-    if (greenLight.innerText !== "") {
+    if (success) {
         setTimeout(function () {
-            greenLight.innerText = '';
+            success.innerText = '';
         }, 3000);
 
     }
 
-    if (yellowLight.innerText !== "") {
+    if (warning) {
         setTimeout(function () {
-            yellowLight.innerText = '';
+            warning.innerText = '';
         }, 3000);
 
     }
 
-    if (redLight.innerText !== "") {
+    if (error) {
         setTimeout(function () {
-            redLight.innerText = '';
+            error.innerText = '';
         }, 3000);
 
     }
 
-</script>
+</script> --}}
 
 
 </html>
