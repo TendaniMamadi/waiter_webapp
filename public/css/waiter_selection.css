@@ -50,3 +50,16 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #0056b3;
 }
+
+/* Media queries for responsiveness */
+@media (max-width: 600px) {
+    .daysPage {
+        width: 90%;
+    }
+}
+
+@media (max-width: 400px) {
+    .daysPage {
+        padding: 10px;
+    }
+}

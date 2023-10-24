@@ -127,8 +127,6 @@ export default function routes(frontendInstance, logic) {
             }
         }
 
-        console.log(groupedData);
-
         res.render('waiter_availability', { groupedData });
     };
 

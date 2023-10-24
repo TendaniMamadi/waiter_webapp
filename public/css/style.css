@@ -1,5 +1,4 @@
-/**************************************************Login page***************************************************/
-
+/* CSS for the login page */
 body {
     margin: 0;
     padding: 0;
@@ -14,8 +13,9 @@ body {
 }
 
 .loginbox {
-    width: 320px;
-    height: 420px;
+    width: 90%;
+    max-width: 400px;
+    height: auto;
     background: transparent;
     border: 1px solid white;
     box-shadow: 10px 5px 5px rgb(229, 227, 227);
@@ -25,7 +25,7 @@ body {
     position: absolute;
     transform: translate(-50%, -50%);
     box-sizing: border-box;
-    padding: 70px 30px;
+    padding: 50px 30px;
 }
 
 .avatar {
@@ -51,10 +51,9 @@ h1 {
 }
 
 .loginbox input {
-    width: 100px;
+    width: 100%;
     margin-bottom: 20px;
 }
-
 
 .loginbox input[type='text'],
 input[type='password'] {
@@ -63,11 +62,9 @@ input[type='password'] {
     background: transparent;
     outline: none;
     height: 40px;
-    width: auto;
     color: #000000;
     font-size: 16px;
 }
-
 
 .loginbox input[type='submit'] {
     border: none;
@@ -85,4 +82,15 @@ input[type='password'] {
     color: #000;
 }
 
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .loginbox {
+        width: 90%;
+    }
+}
 
+@media (max-width: 480px) {
+    .loginbox {
+        padding: 30px 15px;
+    }
+}
