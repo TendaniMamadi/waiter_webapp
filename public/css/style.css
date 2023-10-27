@@ -1,15 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Poppins:wght@300;400&family=Young+Serif&display=swap');
+
 /* CSS for the login page */
 body {
     margin: 0;
     padding: 0;
-    background: url(../img/coffee_&_laptop.jpg);
-    width: 100vw;
-    height: 100vh;
-    text-align: center;
-    background-size: cover;
-    background-position: center;
-    overflow: hidden;
     font-family: sans-serif;
+    text-align: center;
+}
+
+.login-wrap {
+    background-color: #000;
+}
+
+.image {
+    height: 100vh;
+    width: 100vw;
+    background: url(../img/coffee_shop.jpg);
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+    opacity: 0.7;
 }
 
 .loginbox {
@@ -20,7 +30,7 @@ body {
     border: 1px solid white;
     box-shadow: 10px 5px 5px rgb(229, 227, 227);
     color: #0f0f0f;
-    top: 50%;
+    top: 60%;
     left: 50%;
     position: absolute;
     transform: translate(-50%, -50%);
@@ -37,17 +47,32 @@ body {
     left: calc(50% - 50px);
 }
 
-h1 {
+.loginbox h1 {
     margin: 0;
     padding: 0 0 20px;
     text-align: center;
     font-size: 22px;
 }
 
+.multicolor-h1::first-letter {
+    color: #ffcc00;
+    /* Change the color of the first letter to red */
+    text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00, 0 0 30px #ffcc00;
+}
+
+
 .loginbox p {
+    text-align: left;
     margin: 0;
     padding: 0;
     font-weight: bold;
+    color: #ffcc00;
+    /* Set the color of the text */
+    text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00, 0 0 30px #ffcc00;
+}
+
+.errorMessage p {
+    text-align: center;
 }
 
 .loginbox input {
@@ -62,13 +87,25 @@ input[type='password'] {
     background: transparent;
     outline: none;
     height: 40px;
-    color: #000000;
+    /* color: #fff; */
     font-size: 16px;
 }
 
+::placeholder {
+    /* Set the color of the placeholder text */
+    color: red;
+    /* Apply italic style to the placeholder text */
+    font-style: italic;
+    /* Set the opacity of the placeholder text */
+    opacity: 0.5;
+
+}
+
 .loginbox button[type='submit'] {
+
     border: none;
     outline: none;
+    width: 100px;
     height: 40px;
     background: rgb(229, 227, 227);
     color: #000000;
@@ -78,11 +115,11 @@ input[type='password'] {
 
 .loginbox button[type='submit']:hover {
     cursor: pointer;
-    background: rgba(196, 164, 132);
+    background: #ffcc00;
     color: #000;
 }
 
-/* Media queries for responsiveness */
+/* Media queries for loginbox */
 @media (max-width: 768px) {
     .loginbox {
         width: 90%;
@@ -92,5 +129,238 @@ input[type='password'] {
 @media (max-width: 480px) {
     .loginbox {
         padding: 30px 15px;
+    }
+}
+
+/**************************************************admin page***************************************************/
+
+.admin_page table {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #f2f2f2b7;
+}
+
+.admin_page {
+    height: 100vh;
+    width: 100vw;
+    background: url(../img/coffee_&_laptop.jpg);
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.admin_page th,
+td {
+    border: 1px solid #a9a9a9;
+    text-align: center;
+    font-family: "Poppins";
+
+}
+
+.admin_page th {
+    background-color: #f2f2f2;
+}
+
+
+/* CSS for the button */
+.admin_page_buttons button[type="submit"] {
+    margin: 3px;
+    padding: 5px 5px;
+    font-size: 16px;
+    background-color: rgb(230, 177, 124);
+    color: black;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.admin_page_buttons {
+    display: flex;
+    justify-content: center;
+}
+
+
+.admin_page_buttons button[type="submit"]:hover {
+    background-color: rgba(192, 189, 189, 0.945);
+}
+
+/* CSS for the headings */
+.admin_page h1 {
+    text-align: center;
+    font-family: "Young Serif";
+    margin-top: 1.5rem;
+    font-size: 2.3rem;
+
+}
+
+
+/* CSS for the colored classes */
+.orange {
+    background-color: orange;
+    height: 2rem;
+}
+
+.red {
+    background-color: red;
+}
+
+.green {
+    background-color: green;
+}
+
+/*legend styling*/
+.legend {
+    position: fixed;
+    bottom: 140px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.legend h4 {
+    position: fixed;
+    bottom: 200px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.legend-text {
+    font-size: 14px;
+}
+
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .admin_page table {
+        width: 100%;
+    }
+}
+
+/* For responsiveness */
+@media only screen and (max-width: 600px) {
+    .legend {
+        flex-direction: column;
+        left: 10px;
+        bottom: 10px;
+    }
+
+    .legend-item {
+        margin-bottom: 10px;
+    }
+
+    .legend h4 {
+        flex-direction: column;
+        left: 10px;
+        bottom: 90px;
+    }
+
+}
+
+/**************************************************Day selection page***************************************************/
+
+/* Style the form labels */
+.waiterDaysPage label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: white;
+
+}
+
+.waiterDaysPageImage {
+    height: 100vh;
+    width: 100vw;
+    background: url(../img/front_page.jpg);
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.waiterDaysPage {
+    display: inline-block;
+    width: 320px;
+    height: 420px;
+    background: transparent;
+    border: 1px solid black;
+    box-shadow: 5px 5px 5px rgb(229, 227, 227);
+    color: #0f0f0f;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 40px 60px;
+}
+
+/* Style the checkboxes */
+.waiterDaysPage input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+/*form*/
+
+.waiterDaysPage form {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+/* Style the submit button */
+.waiterDaysPage button[type="submit"] {
+    width: 100%;
+    margin: 20px auto;
+    padding: 5px 5px;
+    font-size: 16px;
+    background-color: rgb(230, 177, 124);
+    color: black;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    cursor: pointer;
+
+}
+
+h1 {
+    text-align: center;
+    font-family: "Young Serif";
+    margin-top: 1.5rem;
+    font-size: 2.3rem;
+}
+
+.waiter_days_logout_button {
+    display: flex;
+    justify-content: center;
+}
+
+
+/* Style the submit button on hover */
+.waiterDaysPage button[type="submit"]:hover {
+    background-color: rgba(192, 189, 189, 0.945);
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 600px) {
+    .waiterDaysPage {
+        width: 90%;
+    }
+}
+
+@media (max-width: 400px) {
+    .waiterDaysPage {
+        padding: 10px;
     }
 }

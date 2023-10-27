@@ -139,6 +139,7 @@ export default function routes(frontendInstance, logic) {
        req.flash('success','You have successfuly logged out');
         res.redirect('/')
     }
+    
 
     // const flashMessages = (req, res) => {
     //     req.flash('success', 'This is a success message');

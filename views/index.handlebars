@@ -1,30 +1,41 @@
-<div class="loginbox">
-  <img src="/img/avatar.png" alt="" class="avatar" width="100">
-  <h1>Login Here</h1>
-  <form action="/" method="post">
-    <p>Username</p>
-    <input type="text" name="username" placeholder="Enter Username" required>
-    <p>Password</p>
-    <input type="password" name="password" placeholder="Enter Password" required>
-    <br>
-    <button type="submit" name="" value="Enter"><i class='bx bx-log-in'></i></button>
-  </form>
-  <div class="errorMessage">
-    {{#if messages.error}}
-    <div class="error">
-      <p class="messages" style="color: rgb(239, 0, 0);">{{messages.error}}</p>
+
+<div class="login-wrap" >
+
+
+<div class="image">
+  <div class="loginbox">
+    <img src="/img/avatar.png" alt="" class="avatar" width="100">
+    <h1 class="multicolor-h1">
+      Login Here
+      </h1>
+    <form action="/" method="post">
+      <p>Username</p>
+      <input type="text" name="username" placeholder="Enter Username" required>
+      <p>Password</p>
+      <input type="password" name="password" placeholder="Enter Password" required>
+      <br>
+      <button type="submit" name="" value="Enter"><i class='bx bx-log-in'></i></button>
+    </form>
+    <div class="errorMessage">
+      {{#if messages.error}}
+      <div class="error">
+        <p class="messages" style="color: rgb(239, 0, 0);">{{messages.error}}</p>
+      </div>
+      {{/if}}
     </div>
-    {{/if}}
   </div>
+
+  <div class="dropdown">
+    <select id="userDropdown">
+      <option value="">Select a user</option>
+      <option value="user1">John - password123 -waiter </option>
+      <option value="user2">Mary - password456 -waiter </option>
+      <option value="user3">Kate - password789 -waiter </option>
+      <option value="user4">Mike - password000 -admin </option>
+      <option value="user5">Alex - password012 -waiter </option>
+    </select>
+  </div>
+
 </div>
 
-<div class="dropdown">
-  <select id="userDropdown">
-    <option value="">Select a user</option>
-    <option value="user1">John - password123 -waiter </option>
-    <option value="user2">Mary - password456 -waiter </option>
-    <option value="user3">Kate - password789 -waiter </option>
-    <option value="user4">Mike - password000 -admin </option>
-    <option value="user5">Alex - password012 -waiter </option>
-  </select>
 </div>

@@ -1,41 +1,45 @@
-<h1>Welcome, {{ username }}</h1>
-<div class="displayMessage">
-    {{#if messages.success}}
-    <div class="success">
-        <p class="messages" style="color: rgb(8, 156, 42);">{{messages.success}}</p>
+<div class="waiterDaysPageImage">
+    <h1 class="waiter_heading">Welcome, {{ username }}</h1>
+    <div class="displayMessage">
+        {{#if messages.success}}
+        <div class="success">
+            <p class="messages" style="color: rgb(8, 156, 42);">{{messages.success}}</p>
+        </div>
+        {{/if}}
+
+        {{#if messages.warning}}
+        <div class="warning">
+            <p class="messages" style="color: rgb(241, 0, 0);">{{messages.warning}}</p>
+        </div>
+        {{/if}}
+
+        {{#if messages.error}}
+        <div class="error">
+            <p class="messages" style="color: rgb(239, 0, 0);">{{messages.error}}</p>
+        </div>
+        {{/if}}
     </div>
-    {{/if}}
 
-    {{#if messages.warning}}
-    <div class="warning">
-        <p class="messages" style="color: rgb(241, 0, 0);">{{messages.warning}}</p>
+
+
+    <div class="waiterDaysPage">
+        <form action="/waiters/{{username}}" method="post">
+            {{#each days}}
+            <label for="{{this.day_id}}">{{this.day_name}}</label>
+            <input type="checkbox" id="{{this.day_id}}" name="days" value="{{this.day_name}}" {{#if
+                this.checked}}checked{{/if}}>
+            {{/each}}
+
+            <button type="submit" value="Submit">
+                <i class='bx bx-select-multiple'></i> Confirm Days</button>
+        </form>
+
+
+        <div class="waiter_days_logout_button">
+            <form action="/logout" method="get">
+                <button type="submit" value="submit"><i class='bx bx-log-out'></i>Logout</button>
+            </form>
+
+        </div>
     </div>
-    {{/if}}
-
-    {{#if messages.error}}
-    <div class="error">
-        <p class="messages" style="color: rgb(239, 0, 0);">{{messages.error}}</p>
-    </div>
-    {{/if}}
-</div>
-
-
-<div class="daysPage">
-
-    <form action="/waiters/{{username}}" method="post">
-        {{#each days}}
-        <label for="{{this.day_id}}">{{this.day_name}}</label>
-        <input type="checkbox" id="{{this.day_id}}" name="days" value="{{this.day_name}}" {{#if
-            this.checked}}checked{{/if}}>
-        {{/each}}
-      
-        <button type="submit" value="Submit">
-           <i class='bx bx-select-multiple' ></i>
-           Confirm Days
-        </button>
-    </form>
-
-    <form action="/logout" method="get">
-        <button type="submit"><i class='bx bx-log-out' ></i>Logout</button>
-    </form>
 </div>

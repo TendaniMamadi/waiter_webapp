@@ -75,7 +75,6 @@ export default function db_queries(db) {
     try {
       const query = 'INSERT INTO shifts (waiter_id, day_id) VALUES ($1, $2);';
       let waiterId = await getWaiterId(waiter);
-      console.log(waiterId);
       await db.none(`delete from shifts where waiter_id = $1`, [waiterId])
       for (let i = 0; i < days.length; i++) {
         const day = days[i];

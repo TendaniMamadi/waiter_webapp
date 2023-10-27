@@ -1,97 +1,106 @@
-<h1>Waiter Availability</h1>
-<form action="/days" method="post">
-  <table>
-    <thead>
-      <tr>
-        <th>Availability</th>
-        <th>Waiter Name</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Monday</td>
-        <td class="{{groupedData.Monday.colour}}">
-          {{#if groupedData.Monday}}
-          {{groupedData.Monday}}
-          {{else}}
-          <p>no waiters available</p>
-          {{/if}}
-        </td>
-      </tr>
-      <tr>
-        <td>Tuesday</td>
-        <td class="{{groupedData.Tuesday.colour}}">
-          {{#if groupedData.Tuesday}}
-          {{groupedData.Tuesday}}
-          {{else}}
-          <p>no waiters available</p>
-          {{/if}}
-        </td>
-      </tr>
-      <tr>
-        <td>Wednesday</td>
-        <td class="{{groupedData.Wednesday.colour}}">
-          {{#if groupedData.Wednesday}}
-          {{groupedData.Wednesday}}
-          {{else}}
-          <p>no waiters available</p>
-          {{/if}}
-        </td>
-      </tr>
-      <tr>
-        <td>Thursday</td>
-        <td class="{{groupedData.Thursday.colour}}">
-          {{#if groupedData.Thursday}}
-          {{groupedData.Thursday}}
-          {{else}}
-          <p>no waiters available</p>
-          {{/if}}
-        </td>
-      </tr>
-      <tr>
-        <td>Friday</td>
-        <td class="{{groupedData.Friday.colour}}">
-          {{#if groupedData.Friday}}
-          {{groupedData.Friday}}
-          {{else}}
-          <p>no waiters available</p>
-          {{/if}}
-        </td>
-      </tr>
-      <tr>
-        <td>Saturday</td>
-        <td class="{{groupedData.Saturday.colour}}">
-          {{#if groupedData.Saturday}}
-          {{groupedData.Saturday}}
-          {{else}}
-          <p>no waiters available</p>
-          {{/if}}
-        </td>
-      </tr>
-      <tr>
-        <td>Sunday</td>
-        <td class="{{groupedData.Sunday.colour}}">
-          {{#if groupedData.Sunday}}
-          {{groupedData.Sunday}}
-          {{else}}
-          <p>no waiters available</p>
-          {{/if}}
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div class="admin_page">
+  <h1>Waiter Availability</h1>
+  <form action="/days" method="post">
+    <table>
+      <thead>
+        <tr>
+          <th>Availability</th>
+          <th>Waiter Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Monday</td>
+          <td class="{{groupedData.Monday.colour}}">
+            {{#if groupedData.Monday}}
+            {{groupedData.Monday}}
+            {{else}}
+            <p>no waiters available</p>
+            {{/if}}
+          </td>
+        </tr>
+        <tr>
+          <td>Tuesday</td>
+          <td class="{{groupedData.Tuesday.colour}}">
+            {{#if groupedData.Tuesday}}
+            {{groupedData.Tuesday}}
+            {{else}}
+            <p>no waiters available</p>
+            {{/if}}
+          </td>
+        </tr>
+        <tr>
+          <td>Wednesday</td>
+          <td class="{{groupedData.Wednesday.colour}}">
+            {{#if groupedData.Wednesday}}
+            {{groupedData.Wednesday}}
+            {{else}}
+            <p>no waiters available</p>
+            {{/if}}
+          </td>
+        </tr>
+        <tr>
+          <td>Thursday</td>
+          <td class="{{groupedData.Thursday.colour}}">
+            {{#if groupedData.Thursday}}
+            {{groupedData.Thursday}}
+            {{else}}
+            <p>no waiters available</p>
+            {{/if}}
+          </td>
+        </tr>
+        <tr>
+          <td>Friday</td>
+          <td class="{{groupedData.Friday.colour}}">
+            {{#if groupedData.Friday}}
+            {{groupedData.Friday}}
+            {{else}}
+            <p>no waiters available</p>
+            {{/if}}
+          </td>
+        </tr>
+        <tr>
+          <td>Saturday</td>
+          <td class="{{groupedData.Saturday.colour}}">
+            {{#if groupedData.Saturday}}
+            {{groupedData.Saturday}}
+            {{else}}
+            <p>no waiters available</p>
+            {{/if}}
+          </td>
+        </tr>
+        <tr>
+          <td>Sunday</td>
+          <td class="{{groupedData.Sunday.colour}}">
+            {{#if groupedData.Sunday}}
+            {{groupedData.Sunday}}
+            {{else}}
+            <p>no waiters available</p>
+            {{/if}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-</form>
+  </form>
 
-<form action="/days" method="post">
 
-  <button type="submit"><i class='bx bx-reset'></i>Reset</button>
 
-</form>
 
-<form action="/logout" method="get">
-  <button type="submit"><i class='bx bx-log-out'></i>Logout</button>
-</form>
+  <div class="admin_page_buttons">
+    <form action="/days" method="post">
+      <button type="submit"><i class='bx bx-reset'></i>Reset</button>
+    </form>
+
+    <form action="/logout" method="get">
+      <button type="submit"><i class='bx bx-log-out'></i>Logout</button>
+    </form>
+
+  </div>
+
+
+</div>
+
 
 
 <div class="legend">
