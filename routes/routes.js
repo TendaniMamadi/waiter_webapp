@@ -11,11 +11,10 @@ export default function routes(frontendInstance, logic) {
         const { username, password } = req.body;
         try {
             const result = await logic.pushNewSignUpNamesToDatabase(username, password);
-            console.log(result); // Log the result of the database operation
             if (result) {
                 req.flash('success', 'You have successfully signed up');
-                // Redirect to the appropriate route for logged-in users
-                res.redirect('/'); 
+               
+                res.redirect('/signup'); 
             }else{
                 res.redirect('/signup')
             }

@@ -10,7 +10,7 @@ const db = pgp(connectionString);
 let dbQueries = db_queries(db);
 
 // Test cases
-describe('db_queries Module', function () {
+describe('Database test', function () {
     this.timeout(20000);
 
     it('should be able to get waiter credentials (username and password)', async function () {

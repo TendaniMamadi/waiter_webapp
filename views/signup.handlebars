@@ -8,5 +8,11 @@
             <br>
             <p>Already have an account?<a href="/">Login</a></p>
         </form>
+
+         {{#if messages.success}}
+        <div class="success">
+            <p class="messages" style="color: rgb(8, 156, 42);">{{messages.success}}</p>
+        </div>
+        {{/if}}
     </div>
 </div>

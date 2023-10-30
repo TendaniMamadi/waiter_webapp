@@ -26,10 +26,10 @@ body {
     width: 90%;
     max-width: 400px;
     height: auto;
-    background: transparent;
+    background: rgba(0, 0, 0, 0.605);
     border: 1px solid white;
     box-shadow: 10px 5px 5px rgb(229, 227, 227);
-    color: #0f0f0f;
+    color: white;
     top: 61%;
     left: 50%;
     position: absolute;
@@ -67,9 +67,15 @@ body {
     padding: 0;
     font-weight: bold;
     color: #ffcc00;
-    /* Set the color of the text */
-    text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00, 0 0 30px #ffcc00;
+
 }
+
+.loginbox p a{
+    color: #dddddd;
+    text-decoration: none;
+}
+
+
 
 .errorMessage p {
     text-align: center;
@@ -87,13 +93,13 @@ input[type='password'] {
     background: transparent;
     outline: none;
     height: 40px;
-    /* color: #fff; */
+    color: #fff;
     font-size: 16px;
 }
 
 ::placeholder {
     /* Set the color of the placeholder text */
-    color: red;
+    color: rgb(234, 229, 229);
     /* Apply italic style to the placeholder text */
     font-style: italic;
     /* Set the opacity of the placeholder text */
@@ -385,7 +391,7 @@ h1 {
 .signUpImage {
     height: 100vh;
     width: 100vw;
-    background: url(../img/coffee_web_dev.jpg);
+    background: url(../img/waitersSelection.jpg);
     background-position: center;
     background-size: cover;
     overflow: hidden;
@@ -396,8 +402,13 @@ h1 {
     background-color: white;
 }
 
-a {
-    color: black;
+.signup-form h2 {
+    color: #dddddd;
+}
+
+.signup-form a {
+    color: rgb(21, 150, 4);
+    text-decoration: none;
 }
 
 .signup-form input[type="text"],input[type="password"] {
@@ -412,4 +423,14 @@ a {
     background-color: #4CAF50;
     color: white;
     border: none;
+}
+
+.signup-form ::placeholder {
+    /* Set the color of the placeholder text */
+    color: rgb(238, 9, 9);
+    /* Apply italic style to the placeholder text */
+    font-style: italic;
+    /* Set the opacity of the placeholder text */
+    opacity: 0.5;
+
 }
