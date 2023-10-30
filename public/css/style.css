@@ -30,7 +30,7 @@ body {
     border: 1px solid white;
     box-shadow: 10px 5px 5px rgb(229, 227, 227);
     color: #0f0f0f;
-    top: 60%;
+    top: 61%;
     left: 50%;
     position: absolute;
     transform: translate(-50%, -50%);
@@ -363,4 +363,53 @@ h1 {
     .waiterDaysPage {
         padding: 10px;
     }
+}
+
+/**************************************************signUp page***************************************************/
+.signup-form {
+    display: inline-block;
+    width: 320px;
+    height: 420px;
+    background: transparent;
+    border: 1px solid black;
+    box-shadow: 5px 5px 5px rgb(229, 227, 227);
+    color: #0f0f0f;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 40px 60px;
+}
+
+.signUpImage {
+    height: 100vh;
+    width: 100vw;
+    background: url(../img/coffee_web_dev.jpg);
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+    opacity: 1;
+}
+
+.signup-form p {
+    background-color: white;
+}
+
+a {
+    color: black;
+}
+
+.signup-form input[type="text"],input[type="password"] {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.signup-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
 }

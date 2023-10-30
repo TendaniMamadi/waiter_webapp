@@ -3,6 +3,10 @@ export default function routes(frontendInstance, logic) {
         res.render('index');
     }
 
+    const signUp = async (req,res) => {
+        res.render('signup')
+    };
+
 
     const authenticateUser = async (req, res) => {
         const { username, password } = req.body;
@@ -153,6 +157,7 @@ export default function routes(frontendInstance, logic) {
 
     return {
         homeRoute,
+        signUp,
         authenticateUser,
         showDays,
         submitDays,
