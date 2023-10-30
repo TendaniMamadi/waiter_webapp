@@ -1,4 +1,4 @@
-export default function routes(frontendInstance, logic) {
+export default function routes(frontendInstance,logic) {
     const homeRoute = async (req, res) => {
         res.render('index');
     }
@@ -58,7 +58,7 @@ export default function routes(frontendInstance, logic) {
     const submitDays = async (req, res) => {
         const selectedDays = req.body.days;
         const username = req.params.username;
-        // console.log(req.body);
+       
         if (!selectedDays) {
             req.flash('error', 'Please select days');
             res.redirect('/waiters/' + username);
