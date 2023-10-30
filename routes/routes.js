@@ -1,4 +1,4 @@
-export default function routes(frontendInstance,logic) {
+export default function routes(frontendInstance, logic) {
     const homeRoute = async (req, res) => {
         res.render('index');
     }
@@ -33,6 +33,7 @@ export default function routes(frontendInstance,logic) {
     };
 
 
+
     const showDays = async (req, res) => {
         const username = req.params.username;
         try {
@@ -58,7 +59,7 @@ export default function routes(frontendInstance,logic) {
     const submitDays = async (req, res) => {
         const selectedDays = req.body.days;
         const username = req.params.username;
-       
+
         if (!selectedDays) {
             req.flash('error', 'Please select days');
             res.redirect('/waiters/' + username);
@@ -136,10 +137,10 @@ export default function routes(frontendInstance,logic) {
     };
 
     const endSession = async (req, res) => {
-       req.flash('success','You have successfuly logged out');
+        req.flash('success', 'You have successfuly logged out');
         res.redirect('/')
     }
-    
+
 
     // const flashMessages = (req, res) => {
     //     req.flash('success', 'This is a success message');
