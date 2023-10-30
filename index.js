@@ -39,7 +39,7 @@ app.use(express.json());
 //Routes
 app.get('/', routeInstance.homeRoute);
 app.post('/', routeInstance.authenticateUser);
-app.post('/signup')
+app.post('/signup',routeInstance.register)
 app.get('/signup',routeInstance.signUp)
 app.get('/waiters/:username', routeInstance.showDays);
 app.post('/waiters/:username',routeInstance.submitDays);

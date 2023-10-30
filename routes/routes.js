@@ -3,9 +3,29 @@ export default function routes(frontendInstance, logic) {
         res.render('index');
     }
 
-    const signUp = async (req,res) => {
+    const signUp = async (req, res) => {
         res.render('signup')
     };
+
+    const register = async (req, res) => {
+        const { username, password } = req.body;
+        try {
+            const result = await logic.pushNewSignUpNamesToDatabase(username, password);
+            console.log(result); // Log the result of the database operation
+            if (result) {
+                req.flash('success', 'You have successfully signed up');
+                // Redirect to the appropriate route for logged-in users
+                res.redirect('/'); 
+            }else{
+                res.redirect('/signup')
+            }
+        } catch (error) {
+            req.flash('error', 'An error occurred while processing the request');
+            console.error('Error:', error);
+            res.render('index', { username, error }); 
+        }
+    };
+    
 
 
     const authenticateUser = async (req, res) => {
@@ -158,6 +178,7 @@ export default function routes(frontendInstance, logic) {
     return {
         homeRoute,
         signUp,
+        register,
         authenticateUser,
         showDays,
         submitDays,

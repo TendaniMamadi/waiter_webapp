@@ -12,6 +12,20 @@ export default function db_queries(db) {
     }
   };
 
+  async function pushNewSignUpNamesToDatabase(username, password) {
+    try {
+      const query = 'INSERT INTO waiters (name, password, admin) VALUES ($1, $2, $3)';
+      const values = [username, password, false];
+      await db.none(query, values);
+      return true; // Return true if the insertion is successful
+    } catch (error) {
+      // Handle database insertion errors
+      console.error('Error inserting new user:', error);
+      return false; // Return false if an error occurs
+    }
+  }
+  
+
   async function getWaiterId(name) {
     try {
       const query = 'SELECT waiter_id FROM waiters WHERE name = $1;';
@@ -122,11 +136,11 @@ export default function db_queries(db) {
 
   return {
     getCredentials,
+    pushNewSignUpNamesToDatabase,
     getWaiterId,
     showAllDays,
     getSelectedDays,
     getDayId,
-    // checkForDuplicates,
     insertWaiterAndDayIdIntoShiftTable,
     getShiftsData,
     resetDaysForNewWeek
