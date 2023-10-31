@@ -28,17 +28,17 @@
       </div>
     </div>
 
-    {{!-- <div class="dropdown">
-      <select id="userDropdown">
-        <option value="">Select a user</option>
-        <option value="user1">John - password123 -waiter </option>
-        <option value="user2">Mary - password456 -waiter </option>
-        <option value="user3">Kate - password789 -waiter </option>
-        <option value="user4">Mike - password000 -admin </option>
-        <option value="user5">Alex - password012 -waiter </option>
-      </select>
-    </div> --}}
+
 
   </div>
 
 </div>
+
+<script>
+  setTimeout(function () {
+    const errorDiv = document.querySelector('.errorMessage');
+    if (errorDiv) {
+      errorDiv.style.display = 'none';
+    }
+  }, 5000);
+</script>

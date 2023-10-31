@@ -3,7 +3,7 @@
     <div class="displayMessage">
         {{#if messages.success}}
         <div class="success">
-            <p class="messages" style="color: rgb(8, 156, 42);">{{messages.success}}</p>
+            <p class="messages" style="color: rgb(15, 249, 70);">{{messages.success}}</p>
         </div>
         {{/if}}
 
@@ -43,3 +43,22 @@
         </div>
     </div>
 </div>
+
+<script>
+    setTimeout(function () {
+        const success = document.querySelector('.displayMessage');
+        const warning = document.querySelector('.displayMessage');
+        const error = document.querySelector('.displayMessage');
+
+        if (success) {
+            success.style.display = 'none';
+        }
+        if (warning) {
+            warning.style.display = 'none';
+        }
+        if (error) {
+            error.style.display = 'none';
+        }
+
+    }, 5000);
+</script>

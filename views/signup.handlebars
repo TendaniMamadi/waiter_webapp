@@ -9,10 +9,22 @@
             <p>Already have an account?<a href="/">Login</a></p>
         </form>
 
-         {{#if messages.success}}
-        <div class="success">
-            <p class="messages" style="color: rgb(8, 156, 42);">{{messages.success}}</p>
+
+        <div class="successMessage">
+            {{#if messages.success}}
+            <div class="success">
+                <p class="messages" style="color: rgb(8, 156, 42);">{{messages.success}}</p>
+            </div>
+            {{/if}}
         </div>
-        {{/if}}
     </div>
 </div>
+
+<script>
+    setTimeout(function () {
+        const successDiv = document.querySelector('.successMessage');
+        if (successDiv) {
+            successDiv.style.display = 'none';
+        }
+    }, 5000);
+</script>
