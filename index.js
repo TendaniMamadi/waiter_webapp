@@ -8,7 +8,7 @@ import pgPromise from 'pg-promise';
 import 'dotenv/config';
 import route from './routes/routes.js';
 import frontEnd from './services/web_App.js'
-import db_queries from './database/db_queries.js';
+import db_queries from './services/db_queries.js';
 
 
 const app = express();

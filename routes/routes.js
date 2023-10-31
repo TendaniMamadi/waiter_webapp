@@ -96,20 +96,14 @@ export default function routes(frontendInstance, logic) {
         }
 
         try {
-            // for (const day of selectedDays) {
-            //     const isDuplicate = await logic.checkForDuplicates(username, day);
-            //     console.log(isDuplicate);
-            //     if (isDuplicate) {
-            //         res.redirect('/waiters/' + username);
-            //         return;
-            //     }
-            // }
-
             const result = await logic.insertWaiterAndDayIdIntoShiftTable(username, selectedDays);
             if (result) {
                 req.flash('success', 'Days successfully added.');
             } else {
                 req.flash('error', 'Waiter unknown');
+                res.redirect('/');
+                return;
+                
             }
 
         } catch (error) {
