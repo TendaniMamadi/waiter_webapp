@@ -12,6 +12,15 @@ export default function db_queries(db) {
     }
   };
 
+  async function checkUserExists(username) {
+    try {
+      const result = await db.oneOrNone('SELECT * FROM waiters WHERE name = $1', [username]);
+      return !!result; // Returns true if the result is not null, indicating the user exists
+    } catch (error) {
+      throw new Error('Error checking user existence: ' + error.message);
+    }
+  }
+
   async function pushNewSignUpNamesToDatabase(username, password) {
     try {
       const query = 'INSERT INTO waiters (name, password, admin) VALUES ($1, $2, $3)';
@@ -24,7 +33,7 @@ export default function db_queries(db) {
       return false; // Return false if an error occurs
     }
   }
-  
+
 
   async function getWaiterId(name) {
     try {
@@ -121,6 +130,7 @@ export default function db_queries(db) {
 
   return {
     getCredentials,
+    checkUserExists,
     pushNewSignUpNamesToDatabase,
     getWaiterId,
     showAllDays,

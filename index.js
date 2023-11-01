@@ -41,12 +41,12 @@ app.get('/', routeInstance.homeRoute);
 app.post('/', routeInstance.authenticateUser);
 app.post('/signup',routeInstance.register)
 app.get('/signup',routeInstance.signUp)
-app.get('/waiters/:username', routeInstance.showDays);
+app.get('/waiters/:username',routeInstance.checkUserAuthentication,routeInstance.showDays);
 app.post('/waiters/:username',routeInstance.submitDays);
 app.get('/days', routeInstance.admin);
 app.post('/days',routeInstance.clearingRoute);
 app.get('/logout',routeInstance.endSession);
-// app.get('/display_messages',routeInstance.flashMessages);
+
   
 
 //PORT

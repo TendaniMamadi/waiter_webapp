@@ -13,18 +13,18 @@ export default function routes(frontendInstance, logic) {
             const result = await logic.pushNewSignUpNamesToDatabase(username, password);
             if (result) {
                 req.flash('success', 'You have successfully signed up');
-               
-                res.redirect('/signup'); 
-            }else{
+
+                res.redirect('/signup');
+            } else {
                 res.redirect('/signup')
             }
         } catch (error) {
             req.flash('error', 'An error occurred while processing the request');
             console.error('Error:', error);
-            res.render('index', { username, error }); 
+            res.render('index', { username, error });
         }
     };
-    
+
 
 
     const authenticateUser = async (req, res) => {
@@ -57,14 +57,20 @@ export default function routes(frontendInstance, logic) {
 
 
 
-    const showDays = async (req, res) => {
+    const showDays = async (req, res, next) => {
         const username = req.params.username;
         try {
+            // Check if the user exists in the database
+            const userExists = await logic.checkUserExists(username);
+            if (!userExists) {
+                // Redirect the user to the login page if they are not signed up or in the database
+                return res.redirect('/login');
+            }
+
             const allDays = await logic.showAllDays();
             const selectedDays = await logic.getSelectedDays(username);
 
             allDays.forEach(day => {
-
                 if (selectedDays.includes(day.day_name)) {
                     day.checked = true;
                 } else {
@@ -73,6 +79,24 @@ export default function routes(frontendInstance, logic) {
             });
 
             res.render('waiter_selection', { username, days: allDays });
+        } catch (error) {
+            res.status(500).send('Error fetching data');
+            console.error('Error: ', error);
+        }
+    };
+
+    // Middleware to be used before the showDays route
+    const checkUserAuthentication = async (req, res, next) => {
+        const username = req.params.username;
+        try {
+            // Check if the user exists in the database
+            const userExists = await logic.checkUserExists(username);
+            if (!userExists) {
+                // Redirect the user to the signup page if they are not signed up or in the database
+                return res.redirect('/signup');
+            }
+            // If the user exists, allow them to proceed to the next middleware or route handler
+            next();
         } catch (error) {
             res.status(500).send('Error fetching data');
             console.error('Error: ', error);
@@ -103,7 +127,7 @@ export default function routes(frontendInstance, logic) {
                 req.flash('error', 'Waiter unknown');
                 res.redirect('/');
                 return;
-                
+
             }
 
         } catch (error) {
@@ -159,25 +183,16 @@ export default function routes(frontendInstance, logic) {
     }
 
 
-    // const flashMessages = (req, res) => {
-    //     req.flash('success', 'This is a success message');
-    //     req.flash('warning', 'This is a warning message');
-    //     req.flash('error', 'This is an error message');
-    //     res.render('display_messages', { messages: req.flash() });
-    // }
-
-
-
     return {
         homeRoute,
         signUp,
         register,
         authenticateUser,
         showDays,
+        checkUserAuthentication,
         submitDays,
         admin,
         clearingRoute,
-        endSession,
-        // flashMessages
+        endSession
     }
 }
