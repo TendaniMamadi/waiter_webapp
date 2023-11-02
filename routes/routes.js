@@ -26,36 +26,6 @@ export default function routes(frontendInstance, logic) {
     };
 
 
-
-    // const authenticateUser = async (req, res) => {
-    //     const { username, password } = req.body;
-
-    //     try {
-    //         const result = await logic.getCredentials(username, password);
-
-    //         if (!result) {
-    //             req.flash('error', 'User not found');
-    //             res.render('index', { username });
-    //         } else {
-    //             if (result.password === password) {
-    //                 if (result.admin === true) {
-    //                     res.redirect(`/days`);
-    //                 } else {
-    //                     res.redirect(`/waiters/${username}`);
-    //                 }
-    //             } else {
-    //                 req.flash('error', 'Invalid username or password');
-    //                 res.render('index', { username });
-    //             }
-    //         }
-    //     } catch (error) {
-    //         req.flash('error', 'An error occurred while processing the request');
-    //         console.error('Error:', error);
-    //         res.render('index', { username });
-    //     }
-    // };
-
-
     // Middleware to check if the user is authenticated
     const checkAuth = (req, res, next) => {
         if (req.session.username) {
@@ -126,42 +96,6 @@ export default function routes(frontendInstance, logic) {
             console.error('Error: ', error);
         }
     };
-
-
-    // // // Middleware to be used before the showDays route
-    // const checkWaiterAuthentication = async (req, res, next) => {
-    //     const username = req.params.username;
-    //     try {
-    //         // Check if the user exists in the database
-    //         const userExists = await logic.checkUserExists(username);
-    //         if (!userExists) {
-    //             // Redirect the user to the signup page if they are not signed up or in the database
-    //             return res.redirect('/signup');
-    //         }
-    //         // If the user exists, allow them to proceed to the next middleware or route handler
-    //         next();
-    //     } catch (error) {
-    //         res.status(500).send('Error fetching data');
-    //         console.error('Error: ', error);
-    //     }
-    // };
-
-    // const checkAdminAuthentication = async (req, res, next) => {
-    //     const username = req.body.username;
-    //     try {
-    //         const isAdmin = await logic.checkIfAdmin(username);
-    //         if (isAdmin) {
-    //             // If the user is an admin, allow them to proceed to the next middleware or route handler
-    //             next();
-    //         } else {
-    //             // If the user is not an admin, redirect them or handle the unauthorized access accordingly
-    //             res.redirect('/'); // Redirect to an unauthorized access page
-    //         }
-    //     } catch (error) {
-    //         res.status(500).send('Error checking if user is admin');
-    //         console.error('Error: ', error);
-    //     }
-    // };
 
 
     const submitDays = async (req, res) => {
@@ -257,8 +191,6 @@ export default function routes(frontendInstance, logic) {
         authenticateUser,
         showDays,
         checkAuth,
-        // checkWaiterAuthentication,
-        // checkAdminAuthentication,
         submitDays,
         admin,
         clearingRoute,
