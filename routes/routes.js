@@ -239,8 +239,14 @@ export default function routes(frontendInstance, logic) {
     };
 
     const endSession = async (req, res) => {
-        req.flash('success', 'You have successfuly logged out');
-        res.redirect('/')
+        // Destroy the session
+        req.session.destroy((err) => {
+            if (err) {
+                console.log('Error destroying session:', err);
+            } else {
+                res.redirect('/'); // Redirect to the login page after destroying the session
+            }
+        });
     }
 
 
