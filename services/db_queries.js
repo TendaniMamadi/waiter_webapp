@@ -21,6 +21,22 @@ export default function db_queries(db) {
     }
   }
 
+  async function checkIfAdmin(username) {
+    try {
+      console.log(username);
+      const result = await db.oneOrNone('SELECT admin FROM waiters WHERE name = $1', [username]);
+     
+      if (result) {
+        return result === 't'; // Check if the admin column is 't' for true
+      } else {
+        // Handle the case where no data is returned
+        return false;
+      }
+    } catch (error) {
+      throw new Error('Error checking if user is admin: ' + error.message);
+    }
+  }
+
   async function pushNewSignUpNamesToDatabase(username, password) {
     try {
       const query = 'INSERT INTO waiters (name, password, admin) VALUES ($1, $2, $3)';
@@ -131,6 +147,7 @@ export default function db_queries(db) {
   return {
     getCredentials,
     checkUserExists,
+    checkIfAdmin,
     pushNewSignUpNamesToDatabase,
     getWaiterId,
     showAllDays,

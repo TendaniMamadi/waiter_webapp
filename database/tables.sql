@@ -1,7 +1,7 @@
 -- waiters table
 CREATE TABLE waiters (
     waiter_id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL
 );
 
@@ -17,5 +17,4 @@ CREATE TABLE shifts (
     waiter_id INT REFERENCES waiters(waiter_id),
     day_id INT REFERENCES days(day_id)
 );
-
 
